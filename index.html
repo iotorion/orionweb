@@ -12,198 +12,158 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         :root {
-            --space: #060914;
-            --space-light: #0d1222;
-            --silver: #a3b1c6;
-            --silver-light: #d0d8e4;
-            --white: #f0f2f5;
-            --accent: #5fb8e6;
-            --accent-glow: rgba(95, 184, 230, 0.12);
-            --border: rgba(163, 177, 198, 0.08);
-            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            --space: #060914; --space-light: #0d1222;
+            --silver: #a3b1c6; --silver-light: #d0d8e4;
+            --white: #f0f2f5; --accent: #5fb8e6;
+            --accent-glow: rgba(95,184,230,0.12);
+            --border: rgba(163,177,198,0.08);
+            --ease-out-expo: cubic-bezier(0.16,1,0.3,1);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--space); color: var(--silver); line-height: 1.6; overflow-x: hidden; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Inter',sans-serif; background:var(--space); color:var(--silver); line-height:1.6; overflow-x:hidden; }
 
-        /* ===== NAV ===== */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 0.75rem 2rem; transition: all 0.4s ease; }
-        .nav.scrolled { background: rgba(6,9,20,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
-        .nav-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-        .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
-        .brand-icon { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; display: block; }
-        .brand-text { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); letter-spacing: 0.08em; }
-        .nav-links { display: flex; gap: 2.2rem; list-style: none; align-items: center; }
-        .nav-links a { color: var(--silver); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: color 0.3s; position: relative; }
-        .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1.5px; background: var(--accent); transition: width 0.3s; }
-        .nav-links a:hover { color: var(--white); }
-        .nav-links a:hover::after { width: 100%; }
-        .nav-cta { background: var(--white); color: var(--space); padding: 0.5rem 1.3rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; }
-        .nav-cta:hover { background: var(--accent); transform: translateY(-1px); }
-        .mobile-toggle { display: none; background: none; border: none; color: var(--white); cursor: pointer; }
-
-        /* ===== HERO ===== */
-        .hero { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #060914; }
-        #heroCanvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-        .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,9,20,0.3) 0%, rgba(6,9,20,0.5) 40%, rgba(6,9,20,0.85) 85%, var(--space) 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 800px; padding: 0 2rem; margin-top: 2rem; }
-        .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; transform: translateY(16px); animation: heroFadeUp 0.9s var(--ease-out-expo) 0.2s forwards; }
-        .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.4rem, 5.5vw, 4.2rem); font-weight: 700; color: var(--white); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1.25rem; opacity: 0; transform: translateY(24px); animation: heroFadeUp 0.9s var(--ease-out-expo) 0.4s forwards; }
-        .hero h1 span { color: var(--accent); }
-        .hero-desc { font-size: clamp(1rem, 1.7vw, 1.2rem); color: var(--silver); max-width: 560px; margin: 0 auto 2.2rem; line-height: 1.7; font-weight: 300; opacity: 0; transform: translateY(20px); animation: heroFadeUp 0.9s var(--ease-out-expo) 0.6s forwards; }
-        .hero-actions { display: flex; gap: 0.875rem; justify-content: center; flex-wrap: wrap; opacity: 0; transform: translateY(16px); animation: heroFadeUp 0.9s var(--ease-out-expo) 0.8s forwards; }
-        @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
-        .btn-light { background: var(--white); color: var(--space); padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .btn-light:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(95,184,230,0.25); }
-        .btn-ghost { background: transparent; color: var(--white); padding: 0.85rem 1.8rem; border-radius: 8px; font-weight: 600; font-size: 0.92rem; text-decoration: none; transition: all 0.3s; display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid rgba(255,255,255,0.18); }
-        .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.04); }
-        .hero-scroll { position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%); z-index: 2; color: var(--silver); animation: bounce 2.5s infinite; opacity: 0.4; }
-        @keyframes bounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-8px); } }
-
-        /* ===== COMMON ===== */
-        section { position: relative; z-index: 1; }
-        .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
-        .section-header { text-align: center; margin-bottom: 3.5rem; }
-        .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: var(--white); margin-bottom: 0.6rem; font-weight: 700; letter-spacing: -0.01em; }
-        .section-header p { color: var(--silver); font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
-
-        /* ===== PARTNERS ===== */
-        .partners { padding: 3rem 0; background: rgba(13,18,34,0.6); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-        .partners-label { text-align: center; font-size: 0.68rem; color: var(--silver); text-transform: uppercase; letter-spacing: 0.22em; margin-bottom: 1.25rem; font-weight: 600; opacity: 0.6; }
-        .partners-row { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
-        .partner { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.95rem; color: var(--silver); opacity: 0.3; transition: opacity 0.4s; letter-spacing: 0.03em; }
-        .partner:hover { opacity: 0.75; }
-
-        /* ===== FEATURES ===== */
-        .features { padding: 5rem 0; background: var(--space); }
-        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-        @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 500px) { .features-grid { grid-template-columns: 1fr; } }
-        .feature { background: var(--space-light); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem 1.5rem; transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.8s var(--ease-out-expo), translate 0.8s var(--ease-out-expo); }
-        .feature:hover { transform: translateY(-5px); border-color: rgba(95,184,230,0.18); box-shadow: 0 20px 40px rgba(0,0,0,0.25); }
-        .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-glow); border: 1px solid rgba(95,184,230,0.12); display: flex; align-items: center; justify-content: center; color: var(--accent); margin-bottom: 1.1rem; }
-        .feature h3 { color: var(--white); font-size: 1rem; margin-bottom: 0.4rem; font-weight: 600; }
-        .feature p { color: var(--silver); font-size: 0.88rem; line-height: 1.6; opacity: 0.85; }
-
-        /* ===== SOLUTIONS ===== */
-        .solutions { padding: 5rem 0; background: linear-gradient(180deg, var(--space), var(--space-light)); }
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
+        /* NAV */
+        .nav { position:fixed; top:0; left:0; right:0; z-index:1000; padding:0.75rem 2rem; transition:all 0.4s ease; }
+        .nav.scrolled { background:rgba(6,9,20,0.92); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
+        .nav-inner { max-width:1280px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+        .brand { display:flex; align-items:center; gap:0.6rem; text-decoration:none; }
+        .brand-icon { width:36px; height:36px; border-radius:50%; object-fit:cover; display:block; }
+        .brand-text { font-family:'Space Grotesk',sans-serif; font-size:1.3rem; font-weight:700; color:var(--white); letter-spacing:0.08em; }
+        .nav-links { display:flex; gap:2.2rem; list-style:none; align-items:center; }
+        .nav-links a { color:var(--silver); text-decoration:none; font-size:0.85rem; font-weight:500; transition:color 0.3s; position:relative; }
+        .nav-links a::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1.5px; background:var(--accent); transition:width 0.3s; }
+        .nav-links a:hover { color:var(--white); }
+        .nav-links a:hover::after { width:100%; }
+        .nav-right { display:flex; align-items:center; gap:0.75rem; }
+        .lang-toggle {
+            background:transparent; color:var(--silver); border:1px solid var(--border);
+            padding:0.4rem 0.85rem; border-radius:6px; font-size:0.78rem; font-weight:600;
+            cursor:pointer; transition:all 0.3s; letter-spacing:0.06em;
         }
-        @media (max-width: 900px) { .solutions-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 500px) { .solutions-grid { grid-template-columns: 1fr; } }
-        .solution-card {
-            background: var(--space-light);
-            padding: 2.25rem 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            cursor: default;
-            transition: background 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .solution-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 100%; height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .solution-card:hover { background: #101828; }
-        .solution-card:hover::after { opacity: 1; }
-        .solution-icon {
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            background: var(--accent-glow);
-            border: 1px solid rgba(95,184,230,0.12);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-        .solution-card h3 { color: var(--white); font-size: 1.05rem; font-weight: 600; }
-        .solution-card p { color: var(--silver); font-size: 0.88rem; line-height: 1.65; opacity: 0.85; flex: 1; }
-        .solution-arrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent);
-            opacity: 0;
-            transform: translateX(-6px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .solution-card:hover .solution-arrow { opacity: 1; transform: translateX(0); }
+        .lang-toggle:hover { color:var(--white); border-color:rgba(163,177,198,0.25); }
+        .nav-cta { background:var(--white); color:var(--space); padding:0.5rem 1.3rem; border-radius:6px; font-size:0.82rem; font-weight:600; text-decoration:none; transition:all 0.3s; border:none; cursor:pointer; }
+        .nav-cta:hover { background:var(--accent); transform:translateY(-1px); }
+        .mobile-toggle { display:none; background:none; border:none; color:var(--white); cursor:pointer; }
 
-        /* ===== PROCESS ===== */
-        .process { padding: 5rem 0; background: linear-gradient(180deg, var(--space-light), var(--space)); }
-        .process-flow { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
-        .process-item { display: flex; gap: 1.5rem; padding: 1.5rem 0; }
-        .process-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--accent); opacity: 0.35; min-width: 48px; text-align: right; line-height: 1; }
-        .process-body h3 { color: var(--white); font-size: 1.1rem; margin-bottom: 0.35rem; font-weight: 600; }
-        .process-body p { color: var(--silver); font-size: 0.9rem; line-height: 1.6; opacity: 0.85; }
-        .process-line { width: 1px; height: 32px; background: linear-gradient(180deg, var(--accent), transparent); margin-left: 24px; opacity: 0.2; }
+        /* HERO */
+        .hero { position:relative; min-height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; background:#060914; }
+        #heroCanvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+        .hero-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(6,9,20,0.3) 0%,rgba(6,9,20,0.5) 40%,rgba(6,9,20,0.85) 85%,var(--space) 100%); z-index:1; }
+        .hero-content { position:relative; z-index:2; text-align:center; max-width:800px; padding:0 2rem; margin-top:2rem; }
+        .hero-eyebrow { display:inline-flex; align-items:center; gap:0.5rem; color:var(--accent); font-size:0.75rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1.5rem; opacity:0; transform:translateY(16px); animation:heroFadeUp 0.9s var(--ease-out-expo) 0.2s forwards; }
+        .hero h1 { font-family:'Space Grotesk',sans-serif; font-size:clamp(2.4rem,5.5vw,4.2rem); font-weight:700; color:var(--white); line-height:1.08; letter-spacing:-0.02em; margin-bottom:1.25rem; opacity:0; transform:translateY(24px); animation:heroFadeUp 0.9s var(--ease-out-expo) 0.4s forwards; }
+        .hero h1 span { color:var(--accent); }
+        .hero-desc { font-size:clamp(1rem,1.7vw,1.2rem); color:var(--silver); max-width:560px; margin:0 auto 2.2rem; line-height:1.7; font-weight:300; opacity:0; transform:translateY(20px); animation:heroFadeUp 0.9s var(--ease-out-expo) 0.6s forwards; }
+        .hero-actions { display:flex; gap:0.875rem; justify-content:center; flex-wrap:wrap; opacity:0; transform:translateY(16px); animation:heroFadeUp 0.9s var(--ease-out-expo) 0.8s forwards; }
+        @keyframes heroFadeUp { to { opacity:1; transform:translateY(0); } }
+        .btn-light { background:var(--white); color:var(--space); padding:0.85rem 1.8rem; border-radius:8px; font-weight:600; font-size:0.92rem; text-decoration:none; transition:all 0.3s; display:inline-flex; align-items:center; gap:0.5rem; }
+        .btn-light:hover { background:var(--accent); transform:translateY(-2px); box-shadow:0 10px 28px rgba(95,184,230,0.25); }
+        .btn-ghost { background:transparent; color:var(--white); padding:0.85rem 1.8rem; border-radius:8px; font-weight:600; font-size:0.92rem; text-decoration:none; transition:all 0.3s; display:inline-flex; align-items:center; gap:0.5rem; border:1px solid rgba(255,255,255,0.18); }
+        .btn-ghost:hover { border-color:var(--white); background:rgba(255,255,255,0.04); }
+        .hero-scroll { position:absolute; bottom:1.75rem; left:50%; transform:translateX(-50%); z-index:2; color:var(--silver); animation:bounce 2.5s infinite; opacity:0.4; }
+        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(-8px);} }
 
-        /* ===== ABOUT ===== */
-        .about { padding: 5rem 0; }
-        .about-card { background: linear-gradient(145deg, var(--space-light), rgba(13,18,34,0.5)); border: 1px solid var(--border); border-radius: 20px; padding: 3rem 2.5rem; text-align: center; }
-        .about-logo { height: 55px; width: auto; margin-bottom: 1.25rem; opacity: 0.85; }
-        .about-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2rem); color: var(--white); margin-bottom: 0.75rem; }
-        .about-card p { color: var(--silver); font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.8; }
+        /* COMMON */
+        section { position:relative; z-index:1; }
+        .container { max-width:1140px; margin:0 auto; padding:0 2rem; }
+        .section-header { text-align:center; margin-bottom:3.5rem; }
+        .section-header h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.7rem,3.5vw,2.5rem); color:var(--white); margin-bottom:0.6rem; font-weight:700; letter-spacing:-0.01em; }
+        .section-header p { color:var(--silver); font-size:1rem; max-width:520px; margin:0 auto; line-height:1.7; }
 
-        /* ===== CONTACT ===== */
-        .contact { padding: 5rem 0; }
-        .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
-        @media (max-width: 800px) { .contact-wrap { grid-template-columns: 1fr; gap: 2.5rem; } }
-        .contact-info h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.7rem, 3.5vw, 2.5rem); color: var(--white); margin-bottom: 0.75rem; }
-        .contact-info > p { color: var(--silver); font-size: 0.95rem; margin-bottom: 1.75rem; line-height: 1.7; }
-        .contact-item { display: flex; gap: 0.9rem; align-items: flex-start; margin-bottom: 1.1rem; }
-        .contact-item i { color: var(--accent); margin-top: 0.15rem; }
-        .contact-item strong { color: var(--white); display: block; font-size: 0.9rem; margin-bottom: 0.1rem; }
-        .contact-item span { color: var(--silver); font-size: 0.87rem; }
-        .contact-form { background: var(--space-light); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; }
-        .field { margin-bottom: 1rem; }
-        .field label { display: block; color: var(--silver-light); font-size: 0.82rem; margin-bottom: 0.35rem; font-weight: 500; }
-        .field input, .field textarea { width: 100%; background: rgba(6,9,20,0.5); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.9rem; color: var(--white); font-family: inherit; font-size: 0.9rem; transition: all 0.3s; }
-        .field input:focus, .field textarea:focus { outline: none; border-color: rgba(95,184,230,0.35); box-shadow: 0 0 0 3px var(--accent-glow); }
-        .field textarea { min-height: 100px; resize: vertical; }
-        .contact-form button { width: 100%; margin-top: 0.2rem; }
+        /* PARTNERS */
+        .partners { padding:3rem 0; background:rgba(13,18,34,0.6); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+        .partners-label { text-align:center; font-size:0.68rem; color:var(--silver); text-transform:uppercase; letter-spacing:0.22em; margin-bottom:1.25rem; font-weight:600; opacity:0.6; }
+        .partners-row { display:flex; justify-content:center; align-items:center; gap:3rem; flex-wrap:wrap; }
+        .partner { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.95rem; color:var(--silver); opacity:0.3; transition:opacity 0.4s; letter-spacing:0.03em; }
+        .partner:hover { opacity:0.75; }
 
-        /* ===== FOOTER ===== */
-        .footer { padding: 2.25rem 0; border-top: 1px solid var(--border); text-align: center; }
-        .footer-brand { display: inline-flex; align-items: center; gap: 0.55rem; margin-bottom: 0.9rem; text-decoration: none; }
-        .footer-brand img { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; display: block; }
-        .footer-brand span { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.05rem; color: var(--white); letter-spacing: 0.06em; }
-        .footer p { color: var(--silver); font-size: 0.82rem; opacity: 0.55; }
-        .footer-links { display: flex; justify-content: center; gap: 1.25rem; margin-top: 1rem; list-style: none; }
-        .footer-links a { color: var(--silver); text-decoration: none; font-size: 0.82rem; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--accent); }
+        /* FEATURES */
+        .features { padding:5rem 0; background:var(--space); }
+        .features-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.25rem; }
+        @media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr);}}
+        @media(max-width:500px){.features-grid{grid-template-columns:1fr;}}
+        .feature { background:var(--space-light); border:1px solid var(--border); border-radius:14px; padding:1.75rem 1.5rem; transition:transform 0.4s,border-color 0.4s,box-shadow 0.4s,opacity 0.8s var(--ease-out-expo),translate 0.8s var(--ease-out-expo); }
+        .feature:hover { transform:translateY(-5px); border-color:rgba(95,184,230,0.18); box-shadow:0 20px 40px rgba(0,0,0,0.25); }
+        .feature-icon { width:40px; height:40px; border-radius:10px; background:var(--accent-glow); border:1px solid rgba(95,184,230,0.12); display:flex; align-items:center; justify-content:center; color:var(--accent); margin-bottom:1.1rem; }
+        .feature h3 { color:var(--white); font-size:1rem; margin-bottom:0.4rem; font-weight:600; }
+        .feature p { color:var(--silver); font-size:0.88rem; line-height:1.6; opacity:0.85; }
 
-        /* ===== SCROLL REVEAL ===== */
-        .r-up    { opacity: 0; transform: translateY(48px); }
-        .r-left  { opacity: 0; transform: translateX(-48px); }
-        .r-right { opacity: 0; transform: translateX(48px); }
-        .r-scale { opacity: 0; transform: scale(0.92) translateY(24px); }
-        .r-up, .r-left, .r-right, .r-scale { transition: opacity 0.85s var(--ease-out-expo), transform 0.85s var(--ease-out-expo); transition-delay: var(--d, 0ms); }
-        .r-visible { opacity: 1 !important; transform: none !important; }
+        /* SOLUTIONS */
+        .solutions { padding:5rem 0; background:linear-gradient(180deg,var(--space),var(--space-light)); }
+        .solutions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+        @media(max-width:900px){.solutions-grid{grid-template-columns:repeat(2,1fr);}}
+        @media(max-width:500px){.solutions-grid{grid-template-columns:1fr;}}
+        .solution-card { background:var(--space-light); padding:2.25rem 2rem; display:flex; flex-direction:column; gap:0.9rem; cursor:default; transition:background 0.3s; position:relative; overflow:hidden; }
+        .solution-card::after { content:''; position:absolute; bottom:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,var(--accent),transparent); opacity:0; transition:opacity 0.3s; }
+        .solution-card:hover { background:#101828; }
+        .solution-card:hover::after { opacity:1; }
+        .solution-icon { width:44px; height:44px; border-radius:10px; background:var(--accent-glow); border:1px solid rgba(95,184,230,0.12); display:flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0; }
+        .solution-card h3 { color:var(--white); font-size:1.05rem; font-weight:600; }
+        .solution-card p { color:var(--silver); font-size:0.88rem; line-height:1.65; opacity:0.85; flex:1; }
+        .solution-arrow { display:inline-flex; align-items:center; gap:0.35rem; font-size:0.8rem; font-weight:600; color:var(--accent); opacity:0; transform:translateX(-6px); transition:opacity 0.3s,transform 0.3s; }
+        .solution-card:hover .solution-arrow { opacity:1; transform:translateX(0); }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .nav { padding: 0.65rem 1.1rem; }
-            .nav-links, .nav-cta { display: none; }
-            .mobile-toggle { display: block; }
-            .hero-content { margin-top: 1.5rem; }
-            .hero-actions { flex-direction: column; align-items: center; }
-            .btn-light, .btn-ghost { width: 100%; max-width: 260px; justify-content: center; }
+        /* PROCESS */
+        .process { padding:5rem 0; background:linear-gradient(180deg,var(--space-light),var(--space)); }
+        .process-flow { display:flex; flex-direction:column; gap:0; max-width:720px; margin:0 auto; }
+        .process-item { display:flex; gap:1.5rem; padding:1.5rem 0; }
+        .process-num { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:var(--accent); opacity:0.35; min-width:48px; text-align:right; line-height:1; }
+        .process-body h3 { color:var(--white); font-size:1.1rem; margin-bottom:0.35rem; font-weight:600; }
+        .process-body p { color:var(--silver); font-size:0.9rem; line-height:1.6; opacity:0.85; }
+        .process-line { width:1px; height:32px; background:linear-gradient(180deg,var(--accent),transparent); margin-left:24px; opacity:0.2; }
+
+        /* ABOUT */
+        .about { padding:5rem 0; }
+        .about-card { background:linear-gradient(145deg,var(--space-light),rgba(13,18,34,0.5)); border:1px solid var(--border); border-radius:20px; padding:3rem 2.5rem; text-align:center; }
+        .about-logo { height:55px; width:auto; margin-bottom:1.25rem; opacity:0.85; }
+        .about-card h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.5rem,3vw,2rem); color:var(--white); margin-bottom:0.75rem; }
+        .about-card p { color:var(--silver); font-size:1rem; max-width:600px; margin:0 auto; line-height:1.8; }
+
+        /* CONTACT */
+        .contact { padding:5rem 0; }
+        .contact-wrap { display:grid; grid-template-columns:1fr 1fr; gap:3.5rem; align-items:start; }
+        @media(max-width:800px){.contact-wrap{grid-template-columns:1fr;gap:2.5rem;}}
+        .contact-info h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.7rem,3.5vw,2.5rem); color:var(--white); margin-bottom:0.75rem; }
+        .contact-info > p { color:var(--silver); font-size:0.95rem; margin-bottom:1.75rem; line-height:1.7; }
+        .contact-item { display:flex; gap:0.9rem; align-items:flex-start; margin-bottom:1.1rem; }
+        .contact-item i { color:var(--accent); margin-top:0.15rem; }
+        .contact-item strong { color:var(--white); display:block; font-size:0.9rem; margin-bottom:0.1rem; }
+        .contact-item span { color:var(--silver); font-size:0.87rem; }
+        .contact-form { background:var(--space-light); border:1px solid var(--border); border-radius:16px; padding:1.75rem; }
+        .field { margin-bottom:1rem; }
+        .field label { display:block; color:var(--silver-light); font-size:0.82rem; margin-bottom:0.35rem; font-weight:500; }
+        .field input,.field textarea { width:100%; background:rgba(6,9,20,0.5); border:1px solid var(--border); border-radius:8px; padding:0.7rem 0.9rem; color:var(--white); font-family:inherit; font-size:0.9rem; transition:all 0.3s; }
+        .field input:focus,.field textarea:focus { outline:none; border-color:rgba(95,184,230,0.35); box-shadow:0 0 0 3px var(--accent-glow); }
+        .field textarea { min-height:100px; resize:vertical; }
+        .contact-form button { width:100%; margin-top:0.2rem; }
+
+        /* FOOTER */
+        .footer { padding:2.25rem 0; border-top:1px solid var(--border); text-align:center; }
+        .footer-brand { display:inline-flex; align-items:center; gap:0.55rem; margin-bottom:0.9rem; text-decoration:none; }
+        .footer-brand img { width:30px; height:30px; border-radius:50%; object-fit:cover; display:block; }
+        .footer-brand span { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:1.05rem; color:var(--white); letter-spacing:0.06em; }
+        .footer p { color:var(--silver); font-size:0.82rem; opacity:0.55; }
+        .footer-links { display:flex; justify-content:center; gap:1.25rem; margin-top:1rem; list-style:none; }
+        .footer-links a { color:var(--silver); text-decoration:none; font-size:0.82rem; transition:color 0.3s; }
+        .footer-links a:hover { color:var(--accent); }
+
+        /* SCROLL REVEAL */
+        .r-up    { opacity:0; transform:translateY(48px); }
+        .r-left  { opacity:0; transform:translateX(-48px); }
+        .r-right { opacity:0; transform:translateX(48px); }
+        .r-scale { opacity:0; transform:scale(0.92) translateY(24px); }
+        .r-up,.r-left,.r-right,.r-scale { transition:opacity 0.85s var(--ease-out-expo),transform 0.85s var(--ease-out-expo); transition-delay:var(--d,0ms); }
+        .r-visible { opacity:1!important; transform:none!important; }
+
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .nav{padding:0.65rem 1.1rem;}
+            .nav-links,.nav-cta{display:none;}
+            .mobile-toggle{display:block;}
+            .hero-content{margin-top:1.5rem;}
+            .hero-actions{flex-direction:column;align-items:center;}
+            .btn-light,.btn-ghost{width:100%;max-width:260px;justify-content:center;}
         }
     </style>
 </head>
@@ -216,12 +176,15 @@
                 <span class="brand-text">ORION</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#features">Servicios</a></li>
-                <li><a href="#solutions">Soluciones</a></li>
-                <li><a href="#process">Cómo funciona</a></li>
-                <li><a href="#contact">Contacto</a></li>
+                <li><a href="#features" data-i18n="nav.services">Servicios</a></li>
+                <li><a href="#solutions" data-i18n="nav.solutions">Soluciones</a></li>
+                <li><a href="#process" data-i18n="nav.process">Cómo funciona</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
             </ul>
-            <a href="#contact" class="nav-cta">Solicitar demo</a>
+            <div class="nav-right">
+                <button class="lang-toggle" id="langToggle">EN</button>
+                <a href="#contact" class="nav-cta" data-i18n="nav.cta">Solicitar demo</a>
+            </div>
             <button class="mobile-toggle" aria-label="Menu">
                 <i data-lucide="menu" style="width:22px;height:22px;"></i>
             </button>
@@ -234,16 +197,16 @@
         <div class="hero-content">
             <div class="hero-eyebrow">
                 <i data-lucide="sparkle" style="width:14px;height:14px;"></i>
-                Tecnología de próxima generación
+                <span data-i18n="hero.eyebrow">Tecnología de próxima generación</span>
             </div>
-            <h1>Impulsa tu flota con <span>ORION</span></h1>
-            <p class="hero-desc">Soluciones inteligentes para el mantenimiento predictivo, optimización de rutas y gestión de flotas. Lleva tu operación logística al siguiente nivel.</p>
+            <h1 data-i18n-html="hero.h1">Impulsa tu flota con <span>ORION</span></h1>
+            <p class="hero-desc" data-i18n="hero.desc">Soluciones inteligentes para el mantenimiento predictivo, optimización de rutas y gestión de flotas. Llevá tu operación logística al siguiente nivel.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-light">
-                    Solicitar demo
+                    <span data-i18n="hero.cta">Solicitar demo</span>
                     <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
                 </a>
-                <a href="#process" class="btn-ghost">Cómo funciona</a>
+                <a href="#process" class="btn-ghost" data-i18n="hero.how">Cómo funciona</a>
             </div>
         </div>
         <div class="hero-scroll">
@@ -253,7 +216,7 @@
 
     <section class="partners">
         <div class="container">
-            <p class="partners-label r-up">Confían en ORION</p>
+            <p class="partners-label r-up" data-i18n="partners.label">Confían en ORION</p>
             <div class="partners-row">
                 <span class="partner r-up" style="--d:50ms">LogiTech</span>
                 <span class="partner r-up" style="--d:120ms">TransGlobal</span>
@@ -267,77 +230,76 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-header r-up">
-                <h2>Driving Value for Fleets</h2>
-                <p>Trabajamos con flotas, concesionarios y proveedores de servicios para habilitar operaciones impulsadas por datos.</p>
+                <h2 data-i18n="features.h2">Valor para tu flota</h2>
+                <p data-i18n="features.p">Trabajamos con flotas, concesionarios y proveedores de servicios para habilitar operaciones impulsadas por datos.</p>
             </div>
             <div class="features-grid">
                 <div class="feature r-up" style="--d:0ms">
                     <div class="feature-icon"><i data-lucide="gauge" style="width:20px;height:20px;"></i></div>
-                    <h3>Increase Efficiency</h3>
-                    <p>Automated maintenance planning and fleet-level optimization balance operational needs.</p>
+                    <h3 data-i18n="f1.h3">Mayor eficiencia</h3>
+                    <p data-i18n="f1.p">La planificación automatizada del mantenimiento y la optimización de flota equilibran las necesidades operativas.</p>
                 </div>
                 <div class="feature r-up" style="--d:90ms">
                     <div class="feature-icon"><i data-lucide="trending-up" style="width:20px;height:20px;"></i></div>
-                    <h3>Improve Performance</h3>
-                    <p>Shift from reactive to proactive with precision maintenance plans that extend vehicle lifespan.</p>
+                    <h3 data-i18n="f2.h3">Mejor rendimiento</h3>
+                    <p data-i18n="f2.p">Pasá de reactivo a proactivo con planes de mantenimiento de precisión que extienden la vida útil del vehículo.</p>
                 </div>
                 <div class="feature r-up" style="--d:180ms">
                     <div class="feature-icon"><i data-lucide="wallet" style="width:20px;height:20px;"></i></div>
-                    <h3>Drive Savings</h3>
-                    <p>Catch minor issues before they become major and reduce total cost of ownership.</p>
+                    <h3 data-i18n="f3.h3">Reducción de costos</h3>
+                    <p data-i18n="f3.p">Detectá problemas menores antes de que se vuelvan mayores y reducí el costo total de propiedad.</p>
                 </div>
                 <div class="feature r-up" style="--d:270ms">
                     <div class="feature-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-                    <h3>Increase Uptime</h3>
-                    <p>The right maintenance for the right vehicle at the right time minimizes breakdowns.</p>
+                    <h3 data-i18n="f4.h3">Mayor disponibilidad</h3>
+                    <p data-i18n="f4.p">El mantenimiento correcto para el vehículo correcto en el momento correcto minimiza las averías.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Solutions Grid -->
     <section class="solutions" id="solutions">
         <div class="container">
             <div class="section-header r-up">
-                <h2>Soluciones para cada desafío</h2>
-                <p>ORION cubre el ciclo completo de la operación logística — desde la eficiencia del vehículo hasta el cumplimiento normativo.</p>
+                <h2 data-i18n="solutions.h2">Soluciones para cada desafío</h2>
+                <p data-i18n="solutions.p">ORION cubre el ciclo completo de la operación logística — desde la eficiencia del vehículo hasta el cumplimiento normativo.</p>
             </div>
             <div class="solutions-grid">
                 <div class="solution-card r-up" style="--d:0ms">
                     <div class="solution-icon"><i data-lucide="zap" style="width:20px;height:20px;"></i></div>
-                    <h3>Productividad</h3>
-                    <p>Automatizá la planificación de mantenimiento y liberá a tu equipo para enfocarse en lo que realmente importa.</p>
-                    <span class="solution-arrow">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="s1.h3">Productividad</h3>
+                    <p data-i18n="s1.p">Automatizá la planificación de mantenimiento y liberá a tu equipo para enfocarse en lo que realmente importa.</p>
+                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:80ms">
                     <div class="solution-icon"><i data-lucide="map" style="width:20px;height:20px;"></i></div>
-                    <h3>Optimización de Rutas</h3>
-                    <p>Analizá recorridos en tiempo real para reducir kilómetros muertos, tiempos de entrega y consumo de combustible.</p>
-                    <span class="solution-arrow">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="s2.h3">Optimización de rutas</h3>
+                    <p data-i18n="s2.p">Analizá recorridos en tiempo real para reducir kilómetros muertos, tiempos de entrega y consumo de combustible.</p>
+                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:160ms">
                     <div class="solution-icon"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
-                    <h3>Seguridad</h3>
-                    <p>Detectá comportamientos de riesgo al volante y condiciones mecánicas críticas antes de que generen incidentes.</p>
-                    <span class="solution-arrow">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="s3.h3">Seguridad</h3>
+                    <p data-i18n="s3.p">Detectá comportamientos de riesgo al volante y condiciones mecánicas críticas antes de que generen incidentes.</p>
+                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:240ms">
                     <div class="solution-icon"><i data-lucide="leaf" style="width:20px;height:20px;"></i></div>
-                    <h3>Sostenibilidad</h3>
-                    <p>Medí y reducí la huella de carbono de tu flota con reportes de emisiones y estrategias de conducción eficiente.</p>
-                    <span class="solution-arrow">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="s4.h3">Sostenibilidad</h3>
+                    <p data-i18n="s4.p">Medí y reducí la huella de carbono de tu flota con reportes de emisiones y estrategias de conducción eficiente.</p>
+                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:320ms">
                     <div class="solution-icon"><i data-lucide="file-check" style="width:20px;height:20px;"></i></div>
-                    <h3>Cumplimiento Normativo</h3>
-                    <p>Mantené registros automáticos de inspecciones, licencias y mantenimientos para auditorías sin fricción.</p>
-                    <span class="solution-arrow">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="s5.h3">Cumplimiento normativo</h3>
+                    <p data-i18n="s5.p">Mantené registros automáticos de inspecciones, licencias y mantenimientos para auditorías sin fricción.</p>
+                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:400ms">
                     <div class="solution-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
-                    <h3>Escalabilidad</h3>
-                    <p>Desde 10 hasta 10.000 vehículos — ORION crece con vos sin cambiar de plataforma ni de proveedor.</p>
-                    <span class="solution-arrow">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="s6.h3">Escalabilidad</h3>
+                    <p data-i18n="s6.p">Desde 10 hasta 10.000 vehículos — ORION crece con vos sin cambiar de plataforma ni de proveedor.</p>
+                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
             </div>
         </div>
@@ -346,47 +308,47 @@
     <section class="process" id="process">
         <div class="container">
             <div class="section-header r-up">
-                <h2>Cómo funciona</h2>
-                <p>Integración sin fricciones con tus operaciones existentes en cinco pasos.</p>
+                <h2 data-i18n="process.h2">Cómo funciona</h2>
+                <p data-i18n="process.p">Integración sin fricciones con tus operaciones existentes en cinco pasos.</p>
             </div>
             <div class="process-flow">
                 <div class="process-item r-left" style="--d:0ms">
                     <div class="process-num">1</div>
                     <div class="process-body">
-                        <h3>Get vehicle data</h3>
-                        <p>Connect to your existing telematics and fleet data in the cloud, with zero additional hardware.</p>
+                        <h3 data-i18n="p1.h3">Obtenemos los datos del vehículo</h3>
+                        <p data-i18n="p1.p">Conectamos con tus datos de telemetría y flota existentes en la nube, sin hardware adicional.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:80ms">
                     <div class="process-num">2</div>
                     <div class="process-body">
-                        <h3>Unlock new datapoints</h3>
-                        <p>Proprietary virtual sensors measure vehicle conditions and system health in real time.</p>
+                        <h3 data-i18n="p2.h3">Desbloqueamos nuevos indicadores</h3>
+                        <p data-i18n="p2.p">Sensores virtuales propietarios miden las condiciones del vehículo y la salud del sistema en tiempo real.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:160ms">
                     <div class="process-num">3</div>
                     <div class="process-body">
-                        <h3>Detect risks</h3>
-                        <p>Models train for each individual vehicle to accurately detect risks before the first fault code.</p>
+                        <h3 data-i18n="p3.h3">Detectamos riesgos</h3>
+                        <p data-i18n="p3.p">Los modelos se entrenan por vehículo individual para detectar riesgos antes del primer código de falla.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:240ms">
                     <div class="process-num">4</div>
                     <div class="process-body">
-                        <h3>Calibrate fleet actions</h3>
-                        <p>Continuous learning from real-time behavior to accurately intervene before breakdowns.</p>
+                        <h3 data-i18n="p4.h3">Calibramos las acciones de la flota</h3>
+                        <p data-i18n="p4.p">Aprendizaje continuo a partir del comportamiento en tiempo real para intervenir antes de averías.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:320ms">
                     <div class="process-num">5</div>
                     <div class="process-body">
-                        <h3>Optimize</h3>
-                        <p>Integrate vehicle health and risk detection into existing workflows for limitless uptime.</p>
+                        <h3 data-i18n="p5.h3">Optimizamos</h3>
+                        <p data-i18n="p5.p">Integramos la salud del vehículo y la detección de riesgos en los flujos de trabajo existentes para un uptime sin límites.</p>
                     </div>
                 </div>
             </div>
@@ -397,8 +359,8 @@
         <div class="container">
             <div class="about-card r-scale">
                 <img src="orion_6.jpg" alt="ORION" class="about-logo">
-                <h2>The ORION Way</h2>
-                <p>Our custom approach helps you leverage all your vehicle data and generate customized insights according to your maintenance strategy to optimize fleet health and operations.</p>
+                <h2 data-i18n="about.h2">El camino ORION</h2>
+                <p data-i18n="about.p">Nuestro enfoque personalizado te ayuda a aprovechar todos tus datos vehiculares y generar insights adaptados a tu estrategia de mantenimiento para optimizar la salud y las operaciones de tu flota.</p>
             </div>
         </div>
     </section>
@@ -407,41 +369,41 @@
         <div class="container">
             <div class="contact-wrap">
                 <div class="contact-info r-left">
-                    <h2>Let's connect</h2>
-                    <p>We're happy to talk to you and answer any questions you might have about optimizing your fleet with ORION.</p>
+                    <h2 data-i18n="contact.h2">Conectemos</h2>
+                    <p data-i18n="contact.p">Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación logística.</p>
                     <div class="contact-item">
                         <i data-lucide="map-pin" style="width:18px;height:18px;"></i>
-                        <div><strong>Headquarters</strong><span>Av. Tecnología 500, Piso 12<br>Ciudad de México, México</span></div>
+                        <div><strong data-i18n="contact.hq">Sede central</strong><span>Av. Tecnología 500, Piso 12<br>Ciudad de México, México</span></div>
                     </div>
                     <div class="contact-item">
                         <i data-lucide="mail" style="width:18px;height:18px;"></i>
-                        <div><strong>Email</strong><span>hola@orion.tech</span></div>
+                        <div><strong data-i18n="contact.email">Correo</strong><span>hola@orion.tech</span></div>
                     </div>
                     <div class="contact-item">
                         <i data-lucide="phone" style="width:18px;height:18px;"></i>
-                        <div><strong>Phone</strong><span>+52 (55) 1234-5678</span></div>
+                        <div><strong data-i18n="contact.phone">Teléfono</strong><span>+52 (55) 1234-5678</span></div>
                     </div>
                 </div>
                 <div class="contact-form r-right">
-                    <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We will get back to you soon.');">
+                    <form id="contactForm">
                         <div class="field">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Your full name" required>
+                            <label for="fname" data-i18n="form.name">Nombre</label>
+                            <input type="text" id="fname" data-i18n-placeholder="form.name.ph" placeholder="Tu nombre completo" required>
                         </div>
                         <div class="field">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="you@company.com" required>
+                            <label for="femail" data-i18n="form.email">Correo electrónico</label>
+                            <input type="email" id="femail" data-i18n-placeholder="form.email.ph" placeholder="vos@empresa.com" required>
                         </div>
                         <div class="field">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" placeholder="Company name">
+                            <label for="fcompany" data-i18n="form.company">Empresa</label>
+                            <input type="text" id="fcompany" data-i18n-placeholder="form.company.ph" placeholder="Nombre de empresa">
                         </div>
                         <div class="field">
-                            <label for="message">Message</label>
-                            <textarea id="message" placeholder="How can we help?" required></textarea>
+                            <label for="fmessage" data-i18n="form.message">Mensaje</label>
+                            <textarea id="fmessage" data-i18n-placeholder="form.message.ph" placeholder="¿En qué podemos ayudarte?" required></textarea>
                         </div>
                         <button type="submit" class="btn-light">
-                            Send message
+                            <span data-i18n="form.submit">Enviar mensaje</span>
                             <i data-lucide="send" style="width:16px;height:16px;"></i>
                         </button>
                     </form>
@@ -456,27 +418,165 @@
                 <img src="orion_iso2.png" alt="ORION">
                 <span>ORION</span>
             </a>
-            <p>© 2026 ORION Technologies. All rights reserved.</p>
+            <p data-i18n="footer.copy">© 2026 ORION Technologies. Todos los derechos reservados.</p>
             <ul class="footer-links">
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Terms</a></li>
+                <li><a href="#" data-i18n="footer.privacy">Privacidad</a></li>
+                <li><a href="#" data-i18n="footer.terms">Términos</a></li>
                 <li><a href="#">LinkedIn</a></li>
             </ul>
         </div>
     </footer>
 
     <script>
+        // ===== I18N =====
+        const T = {
+            es: {
+                'nav.services':   'Servicios',
+                'nav.solutions':  'Soluciones',
+                'nav.process':    'Cómo funciona',
+                'nav.contact':    'Contacto',
+                'nav.cta':        'Solicitar demo',
+                'hero.eyebrow':   'Tecnología de próxima generación',
+                'hero.h1':        'Impulsa tu flota con <span>ORION</span>',
+                'hero.desc':      'Soluciones inteligentes para el mantenimiento predictivo, optimización de rutas y gestión de flotas. Llevá tu operación logística al siguiente nivel.',
+                'hero.cta':       'Solicitar demo',
+                'hero.how':       'Cómo funciona',
+                'partners.label': 'Confían en ORION',
+                'features.h2':    'Valor para tu flota',
+                'features.p':     'Trabajamos con flotas, concesionarios y proveedores de servicios para habilitar operaciones impulsadas por datos.',
+                'f1.h3': 'Mayor eficiencia',       'f1.p': 'La planificación automatizada del mantenimiento y la optimización de flota equilibran las necesidades operativas.',
+                'f2.h3': 'Mejor rendimiento',      'f2.p': 'Pasá de reactivo a proactivo con planes de mantenimiento de precisión que extienden la vida útil del vehículo.',
+                'f3.h3': 'Reducción de costos',    'f3.p': 'Detectá problemas menores antes de que se vuelvan mayores y reducí el costo total de propiedad.',
+                'f4.h3': 'Mayor disponibilidad',   'f4.p': 'El mantenimiento correcto para el vehículo correcto en el momento correcto minimiza las averías.',
+                'solutions.h2':      'Soluciones para cada desafío',
+                'solutions.p':       'ORION cubre el ciclo completo de la operación logística — desde la eficiencia del vehículo hasta el cumplimiento normativo.',
+                'solutions.explore': 'Explorar',
+                's1.h3': 'Productividad',              's1.p': 'Automatizá la planificación de mantenimiento y liberá a tu equipo para enfocarse en lo que realmente importa.',
+                's2.h3': 'Optimización de rutas',      's2.p': 'Analizá recorridos en tiempo real para reducir kilómetros muertos, tiempos de entrega y consumo de combustible.',
+                's3.h3': 'Seguridad',                  's3.p': 'Detectá comportamientos de riesgo al volante y condiciones mecánicas críticas antes de que generen incidentes.',
+                's4.h3': 'Sostenibilidad',             's4.p': 'Medí y reducí la huella de carbono de tu flota con reportes de emisiones y estrategias de conducción eficiente.',
+                's5.h3': 'Cumplimiento normativo',     's5.p': 'Mantené registros automáticos de inspecciones, licencias y mantenimientos para auditorías sin fricción.',
+                's6.h3': 'Escalabilidad',              's6.p': 'Desde 10 hasta 10.000 vehículos — ORION crece con vos sin cambiar de plataforma ni de proveedor.',
+                'process.h2': 'Cómo funciona',
+                'process.p':  'Integración sin fricciones con tus operaciones existentes en cinco pasos.',
+                'p1.h3': 'Obtenemos los datos del vehículo',      'p1.p': 'Conectamos con tus datos de telemetría y flota existentes en la nube, sin hardware adicional.',
+                'p2.h3': 'Desbloqueamos nuevos indicadores',       'p2.p': 'Sensores virtuales propietarios miden las condiciones del vehículo y la salud del sistema en tiempo real.',
+                'p3.h3': 'Detectamos riesgos',                     'p3.p': 'Los modelos se entrenan por vehículo individual para detectar riesgos antes del primer código de falla.',
+                'p4.h3': 'Calibramos las acciones de la flota',    'p4.p': 'Aprendizaje continuo a partir del comportamiento en tiempo real para intervenir antes de averías.',
+                'p5.h3': 'Optimizamos',                            'p5.p': 'Integramos la salud del vehículo y la detección de riesgos en los flujos de trabajo existentes para un uptime sin límites.',
+                'about.h2': 'El camino ORION',
+                'about.p':  'Nuestro enfoque personalizado te ayuda a aprovechar todos tus datos vehiculares y generar insights adaptados a tu estrategia de mantenimiento para optimizar la salud y las operaciones de tu flota.',
+                'contact.h2':    'Conectemos',
+                'contact.p':     'Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación logística.',
+                'contact.hq':    'Sede central',
+                'contact.email': 'Correo',
+                'contact.phone': 'Teléfono',
+                'form.name':       'Nombre',          'form.name.ph':    'Tu nombre completo',
+                'form.email':      'Correo electrónico', 'form.email.ph': 'vos@empresa.com',
+                'form.company':    'Empresa',          'form.company.ph': 'Nombre de empresa',
+                'form.message':    'Mensaje',          'form.message.ph': '¿En qué podemos ayudarte?',
+                'form.submit':     'Enviar mensaje',
+                'form.alert':      '¡Gracias por escribirnos! Nos pondremos en contacto pronto.',
+                'footer.copy':    '© 2026 ORION Technologies. Todos los derechos reservados.',
+                'footer.privacy': 'Privacidad',
+                'footer.terms':   'Términos',
+            },
+            en: {
+                'nav.services':   'Services',
+                'nav.solutions':  'Solutions',
+                'nav.process':    'How it works',
+                'nav.contact':    'Contact',
+                'nav.cta':        'Request demo',
+                'hero.eyebrow':   'Next-generation technology',
+                'hero.h1':        'Power your fleet with <span>ORION</span>',
+                'hero.desc':      'Intelligent solutions for predictive maintenance, route optimization, and fleet management. Take your logistics operation to the next level.',
+                'hero.cta':       'Request demo',
+                'hero.how':       'How it works',
+                'partners.label': 'Trusted by',
+                'features.h2':    'Driving Value for Fleets',
+                'features.p':     'We work with fleets, dealers, and service providers to enable data-driven operations.',
+                'f1.h3': 'Increase Efficiency',    'f1.p': 'Automated maintenance planning and fleet-level optimization balance operational needs.',
+                'f2.h3': 'Improve Performance',    'f2.p': 'Shift from reactive to proactive with precision maintenance plans that extend vehicle lifespan.',
+                'f3.h3': 'Drive Savings',           'f3.p': 'Catch minor issues before they become major and reduce total cost of ownership.',
+                'f4.h3': 'Increase Uptime',         'f4.p': 'The right maintenance for the right vehicle at the right time minimizes breakdowns.',
+                'solutions.h2':      'Solutions for every challenge',
+                'solutions.p':       'ORION covers the full logistics operation cycle — from vehicle efficiency to regulatory compliance.',
+                'solutions.explore': 'Explore',
+                's1.h3': 'Productivity',             's1.p': 'Automate maintenance planning and free your team to focus on what really matters.',
+                's2.h3': 'Route Optimization',       's2.p': 'Analyze routes in real time to reduce deadhead miles, delivery times, and fuel consumption.',
+                's3.h3': 'Safety',                   's3.p': 'Detect risky driving behaviors and critical mechanical conditions before they cause incidents.',
+                's4.h3': 'Sustainability',            's4.p': 'Measure and reduce your fleet\'s carbon footprint with emissions reports and efficient driving strategies.',
+                's5.h3': 'Regulatory Compliance',    's5.p': 'Keep automatic records of inspections, licenses, and maintenance for frictionless audits.',
+                's6.h3': 'Scalability',               's6.p': 'From 10 to 10,000 vehicles — ORION grows with you without changing platform or provider.',
+                'process.h2': 'How it works',
+                'process.p':  'Frictionless integration with your existing operations in five steps.',
+                'p1.h3': 'Get vehicle data',            'p1.p': 'Connect to your existing telematics and fleet data in the cloud, with zero additional hardware.',
+                'p2.h3': 'Unlock new datapoints',       'p2.p': 'Proprietary virtual sensors measure vehicle conditions and system health in real time.',
+                'p3.h3': 'Detect risks',                'p3.p': 'Models train for each individual vehicle to accurately detect risks before the first fault code.',
+                'p4.h3': 'Calibrate fleet actions',     'p4.p': 'Continuous learning from real-time behavior to accurately intervene before breakdowns.',
+                'p5.h3': 'Optimize',                    'p5.p': 'Integrate vehicle health and risk detection into existing workflows for limitless uptime.',
+                'about.h2': 'The ORION Way',
+                'about.p':  'Our custom approach helps you leverage all your vehicle data and generate customized insights according to your maintenance strategy to optimize fleet health and operations.',
+                'contact.h2':    "Let's connect",
+                'contact.p':     "We're available to answer your questions and show you how ORION can transform your logistics operation.",
+                'contact.hq':    'Headquarters',
+                'contact.email': 'Email',
+                'contact.phone': 'Phone',
+                'form.name':       'Name',     'form.name.ph':    'Your full name',
+                'form.email':      'Email',    'form.email.ph':   'you@company.com',
+                'form.company':    'Company',  'form.company.ph': 'Company name',
+                'form.message':    'Message',  'form.message.ph': 'How can we help?',
+                'form.submit':     'Send message',
+                'form.alert':      'Thanks for reaching out! We will get back to you soon.',
+                'footer.copy':    '© 2026 ORION Technologies. All rights reserved.',
+                'footer.privacy': 'Privacy',
+                'footer.terms':   'Terms',
+            }
+        };
+
+        let currentLang = 'es';
+
+        function applyLang(lang) {
+            const t = T[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const v = t[el.dataset.i18n];
+                if (v !== undefined) el.textContent = v;
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const v = t[el.dataset.i18nHtml];
+                if (v !== undefined) el.innerHTML = v;
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const v = t[el.dataset.i18nPlaceholder];
+                if (v !== undefined) el.placeholder = v;
+            });
+            document.documentElement.lang = lang;
+            langToggle.textContent = lang === 'es' ? 'EN' : 'ES';
+            currentLang = lang;
+            lucide.createIcons();
+        }
+
+        const langToggle = document.getElementById('langToggle');
+        langToggle.addEventListener('click', () => applyLang(currentLang === 'es' ? 'en' : 'es'));
+
+        // Nav + icons
         lucide.createIcons();
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
-        // Scroll reveal
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('r-visible'); revealObserver.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.r-up, .r-left, .r-right, .r-scale').forEach(el => revealObserver.observe(el));
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            alert(T[currentLang]['form.alert']);
+        });
 
-        // Hero canvas
+        // Scroll reveal
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('r-visible'); revealObs.unobserve(e.target); } });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.r-up,.r-left,.r-right,.r-scale').forEach(el => revealObs.observe(el));
+
+        // ===== HERO CANVAS =====
         (function() {
             const canvas = document.getElementById('heroCanvas');
             const ctx = canvas.getContext('2d');
@@ -487,43 +587,42 @@
             let highways = [];
             function buildHighways() {
                 highways = [
-                    { yf: 0.22, laneH: 28, dir: 1,  speed: 1.8 },
-                    { yf: 0.38, laneH: 34, dir: -1, speed: 2.2 },
-                    { yf: 0.55, laneH: 34, dir: 1,  speed: 1.6 },
-                    { yf: 0.70, laneH: 28, dir: -1, speed: 2.5 },
-                    { yf: 0.84, laneH: 22, dir: 1,  speed: 1.4 },
+                    { yf:0.22, laneH:28, dir:1,  speed:1.8 },
+                    { yf:0.38, laneH:34, dir:-1, speed:2.2 },
+                    { yf:0.55, laneH:34, dir:1,  speed:1.6 },
+                    { yf:0.70, laneH:28, dir:-1, speed:2.5 },
+                    { yf:0.84, laneH:22, dir:1,  speed:1.4 },
                 ];
             }
             buildHighways();
             const COLORS = ['#5fb8e6','#4a9fd4','#7ecef0','#3a8fc4'];
             function makeTruck(hw) {
-                const w = W(), going = hw.dir === 1, tw = 52 + Math.random()*28, th = hw.laneH * 0.62;
-                return { x: going ? -tw - Math.random()*w : w + Math.random()*w, y:0, w:tw, h:th, speed: hw.speed*(0.8+Math.random()*0.5)*hw.dir, color: COLORS[Math.floor(Math.random()*COLORS.length)], hw, labelTimer: Math.random()*300 };
+                const w=W(), going=hw.dir===1, tw=52+Math.random()*28, th=hw.laneH*0.62;
+                return { x:going?-tw-Math.random()*w:w+Math.random()*w, y:0, w:tw, h:th, speed:hw.speed*(0.8+Math.random()*0.5)*hw.dir, color:COLORS[Math.floor(Math.random()*COLORS.length)], hw, labelTimer:Math.random()*300 };
             }
-            let trucks = [];
-            highways.forEach(hw => { for (let i=0; i<4+Math.floor(Math.random()*3); i++) { const t=makeTruck(hw); t.x=Math.random()*(W()+200)-100; trucks.push(t); } });
-            const DATA_LABELS = ['87 km/h','94 km/h','102 km/h','76 km/h','RUTA-07','RUTA-12','RUTA-03','ETA 14:32','ETA 09:18','ETA 17:45','98% uptime','Motor OK','Temp 82°C'];
-            let floatingLabels = [];
-            function spawnLabel(t) { floatingLabels.push({ x:t.x+t.w/2, y:t.hw.yf*H()-t.h-14, text:DATA_LABELS[Math.floor(Math.random()*DATA_LABELS.length)], alpha:0, life:0, maxLife:120 }); }
-            function drawRoad(hw) {
-                const y=hw.yf*H(), rH=hw.laneH*2.2;
-                ctx.fillStyle='#0d1120'; ctx.fillRect(0,y-rH/2,W(),rH);
-                ctx.strokeStyle='rgba(255,255,255,0.04)'; ctx.lineWidth=1;
-                ctx.beginPath(); ctx.moveTo(0,y-rH/2); ctx.lineTo(W(),y-rH/2); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(0,y+rH/2); ctx.lineTo(W(),y+rH/2); ctx.stroke();
-                ctx.setLineDash([18,14]); ctx.strokeStyle='rgba(255,255,255,0.08)'; ctx.lineWidth=1.5;
-                ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W(),y); ctx.stroke();
-                ctx.setLineDash([]);
+            let trucks=[];
+            highways.forEach(hw => { for(let i=0;i<4+Math.floor(Math.random()*3);i++){const t=makeTruck(hw);t.x=Math.random()*(W()+200)-100;trucks.push(t);} });
+            const DL=['87 km/h','94 km/h','102 km/h','76 km/h','RUTA-07','RUTA-12','RUTA-03','ETA 14:32','ETA 09:18','ETA 17:45','98% uptime','Motor OK','Temp 82°C'];
+            let floatingLabels=[];
+            function spawnLabel(t){floatingLabels.push({x:t.x+t.w/2,y:t.hw.yf*H()-t.h-14,text:DL[Math.floor(Math.random()*DL.length)],alpha:0,life:0,maxLife:120});}
+            function drawRoad(hw){
+                const y=hw.yf*H(),rH=hw.laneH*2.2;
+                ctx.fillStyle='#0d1120';ctx.fillRect(0,y-rH/2,W(),rH);
+                ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=1;
+                ctx.beginPath();ctx.moveTo(0,y-rH/2);ctx.lineTo(W(),y-rH/2);ctx.stroke();
+                ctx.beginPath();ctx.moveTo(0,y+rH/2);ctx.lineTo(W(),y+rH/2);ctx.stroke();
+                ctx.setLineDash([18,14]);ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1.5;
+                ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W(),y);ctx.stroke();ctx.setLineDash([]);
             }
-            function drawTruck(t) {
-                const y=t.hw.yf*H()-t.h/2, going=t.hw.dir===1, tl=t.w*2.5, td=going?-1:1;
-                const gr=ctx.createLinearGradient(t.x,0,t.x+td*tl,0); gr.addColorStop(0,t.color+'30'); gr.addColorStop(1,'transparent');
-                ctx.fillStyle=gr; ctx.fillRect(going?t.x-tl:t.x+t.w,y,tl,t.h);
-                ctx.fillStyle='#1a2238'; ctx.beginPath(); ctx.roundRect(t.x,y,t.w,t.h,3); ctx.fill();
-                const cw=t.w*0.28; ctx.fillStyle='#222d44'; ctx.beginPath();
-                if(going) ctx.roundRect(t.x+t.w-cw,y,cw,t.h,[0,3,3,0]); else ctx.roundRect(t.x,y,cw,t.h,[3,0,0,3]);
-                ctx.fill(); ctx.fillStyle=t.color+'55'; ctx.fillRect(t.x+2,y+t.h*0.35,t.w-4,t.h*0.12);
-                const ly=y+t.h*0.22, ly2=y+t.h*0.78;
+            function drawTruck(t){
+                const y=t.hw.yf*H()-t.h/2,going=t.hw.dir===1,tl=t.w*2.5,td=going?-1:1;
+                const gr=ctx.createLinearGradient(t.x,0,t.x+td*tl,0);gr.addColorStop(0,t.color+'30');gr.addColorStop(1,'transparent');
+                ctx.fillStyle=gr;ctx.fillRect(going?t.x-tl:t.x+t.w,y,tl,t.h);
+                ctx.fillStyle='#1a2238';ctx.beginPath();ctx.roundRect(t.x,y,t.w,t.h,3);ctx.fill();
+                const cw=t.w*0.28;ctx.fillStyle='#222d44';ctx.beginPath();
+                if(going)ctx.roundRect(t.x+t.w-cw,y,cw,t.h,[0,3,3,0]);else ctx.roundRect(t.x,y,cw,t.h,[3,0,0,3]);
+                ctx.fill();ctx.fillStyle=t.color+'55';ctx.fillRect(t.x+2,y+t.h*0.35,t.w-4,t.h*0.12);
+                const ly=y+t.h*0.22,ly2=y+t.h*0.78;
                 if(going){drawLight(t.x+t.w-3,ly,'#e8f4ff',6);drawLight(t.x+t.w-3,ly2,'#e8f4ff',6);drawLight(t.x+3,ly,'#ff3030',5);drawLight(t.x+3,ly2,'#ff3030',5);}
                 else{drawLight(t.x+3,ly,'#e8f4ff',6);drawLight(t.x+3,ly2,'#e8f4ff',6);drawLight(t.x+t.w-3,ly,'#ff3030',5);drawLight(t.x+t.w-3,ly2,'#ff3030',5);}
             }
@@ -532,20 +631,20 @@
             function drawGrid(){ctx.strokeStyle='rgba(95,184,230,0.025)';ctx.lineWidth=1;const s=60;for(let x=0;x<W();x+=s){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H());ctx.stroke();}for(let y=0;y<H();y+=s){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W(),y);ctx.stroke();}}
             let last=0;
             function frame(ts){
-                const dt=Math.min((ts-last)/16.67,3); last=ts;
+                const dt=Math.min((ts-last)/16.67,3);last=ts;
                 const w=W(),h=H();
-                ctx.fillStyle='#060914'; ctx.fillRect(0,0,w,h);
-                drawGrid(); highways.forEach(hw=>drawRoad(hw));
+                ctx.fillStyle='#060914';ctx.fillRect(0,0,w,h);
+                drawGrid();highways.forEach(hw=>drawRoad(hw));
                 trucks.forEach(t=>{
-                    t.x+=t.speed*dt; t.labelTimer-=dt;
+                    t.x+=t.speed*dt;t.labelTimer-=dt;
                     if(t.labelTimer<=0){spawnLabel(t);t.labelTimer=180+Math.random()*240;}
-                    if(t.hw.dir===1&&t.x>w+60) Object.assign(t,makeTruck(t.hw));
-                    else if(t.hw.dir===-1&&t.x+t.w<-60) Object.assign(t,makeTruck(t.hw));
+                    if(t.hw.dir===1&&t.x>w+60)Object.assign(t,makeTruck(t.hw));
+                    else if(t.hw.dir===-1&&t.x+t.w<-60)Object.assign(t,makeTruck(t.hw));
                     drawTruck(t);
                 });
                 floatingLabels=floatingLabels.filter(l=>{l.life+=dt;const h2=l.maxLife/2;l.alpha=l.life<h2?l.life/h2:1-(l.life-h2)/h2;l.y-=0.15*dt;drawLabel(l);return l.life<l.maxLife;});
-                const tg=ctx.createLinearGradient(0,0,0,h*0.35); tg.addColorStop(0,'#060914'); tg.addColorStop(1,'transparent'); ctx.fillStyle=tg; ctx.fillRect(0,0,w,h*0.35);
-                const bg=ctx.createLinearGradient(0,h*0.65,0,h); bg.addColorStop(0,'transparent'); bg.addColorStop(1,'#060914'); ctx.fillStyle=bg; ctx.fillRect(0,h*0.65,w,h*0.35);
+                const tg=ctx.createLinearGradient(0,0,0,h*0.35);tg.addColorStop(0,'#060914');tg.addColorStop(1,'transparent');ctx.fillStyle=tg;ctx.fillRect(0,0,w,h*0.35);
+                const bg=ctx.createLinearGradient(0,h*0.65,0,h);bg.addColorStop(0,'transparent');bg.addColorStop(1,'#060914');ctx.fillStyle=bg;ctx.fillRect(0,h*0.65,w,h*0.35);
                 requestAnimationFrame(frame);
             }
             requestAnimationFrame(frame);
