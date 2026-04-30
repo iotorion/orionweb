@@ -570,11 +570,19 @@
             alert(T[currentLang]['form.alert']);
         });
 
-        // Scroll reveal
-        const revealObs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('r-visible'); revealObs.unobserve(e.target); } });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.r-up,.r-left,.r-right,.r-scale').forEach(el => revealObs.observe(el));
+        // Scroll reveal — double rAF ensures elements are painted hidden before observer fires
+        const revealEls = document.querySelectorAll('.r-up,.r-left,.r-right,.r-scale');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            const revealObs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        requestAnimationFrame(() => e.target.classList.add('r-visible'));
+                        revealObs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+            revealEls.forEach(el => revealObs.observe(el));
+        }));
 
         // ===== HERO CANVAS =====
         (function() {
