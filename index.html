@@ -20,6 +20,7 @@
             --accent: #5fb8e6;
             --accent-glow: rgba(95, 184, 230, 0.12);
             --border: rgba(163, 177, 198, 0.08);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -163,6 +164,9 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: heroFadeUp 0.9s var(--ease-out-expo) 0.2s forwards;
         }
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
@@ -172,6 +176,9 @@
             line-height: 1.08;
             letter-spacing: -0.02em;
             margin-bottom: 1.25rem;
+            opacity: 0;
+            transform: translateY(24px);
+            animation: heroFadeUp 0.9s var(--ease-out-expo) 0.4s forwards;
         }
         .hero h1 span { color: var(--accent); }
         .hero-desc {
@@ -181,12 +188,21 @@
             margin: 0 auto 2.2rem;
             line-height: 1.7;
             font-weight: 300;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: heroFadeUp 0.9s var(--ease-out-expo) 0.6s forwards;
         }
         .hero-actions {
             display: flex;
             gap: 0.875rem;
             justify-content: center;
             flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(16px);
+            animation: heroFadeUp 0.9s var(--ease-out-expo) 0.8s forwards;
+        }
+        @keyframes heroFadeUp {
+            to { opacity: 1; transform: translateY(0); }
         }
         .btn-light {
             background: var(--white);
@@ -322,7 +338,7 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 1.75rem 1.5rem;
-            transition: all 0.4s ease;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.8s var(--ease-out-expo), translate 0.8s var(--ease-out-expo);
         }
         .feature:hover {
             transform: translateY(-5px);
@@ -450,7 +466,7 @@
             border: 1px solid var(--border);
             border-radius: 14px;
             padding: 1.6rem;
-            transition: all 0.3s;
+            transition: border-color 0.3s, transform 0.3s, opacity 0.8s var(--ease-out-expo), translate 0.8s var(--ease-out-expo);
         }
         .t-card:hover {
             border-color: rgba(95, 184, 230, 0.1);
@@ -602,6 +618,22 @@
         }
         .footer-links a:hover { color: var(--accent); }
 
+        /* ===== SCROLL REVEAL ===== */
+        .r-up    { opacity: 0; transform: translateY(48px); }
+        .r-left  { opacity: 0; transform: translateX(-48px); }
+        .r-right { opacity: 0; transform: translateX(48px); }
+        .r-scale { opacity: 0; transform: scale(0.92) translateY(24px); }
+        .r-up, .r-left, .r-right, .r-scale {
+            transition:
+                opacity 0.85s var(--ease-out-expo),
+                transform 0.85s var(--ease-out-expo);
+            transition-delay: var(--d, 0ms);
+        }
+        .r-visible {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav { padding: 0.65rem 1.1rem; }
@@ -664,13 +696,13 @@
     <!-- Partners -->
     <section class="partners">
         <div class="container">
-            <p class="partners-label">Confían en ORION</p>
+            <p class="partners-label r-up">Confían en ORION</p>
             <div class="partners-row">
-                <span class="partner">LogiTech</span>
-                <span class="partner">TransGlobal</span>
-                <span class="partner">FleetPro</span>
-                <span class="partner">CargoMax</span>
-                <span class="partner">RouteAI</span>
+                <span class="partner r-up" style="--d:50ms">LogiTech</span>
+                <span class="partner r-up" style="--d:120ms">TransGlobal</span>
+                <span class="partner r-up" style="--d:190ms">FleetPro</span>
+                <span class="partner r-up" style="--d:260ms">CargoMax</span>
+                <span class="partner r-up" style="--d:330ms">RouteAI</span>
             </div>
         </div>
     </section>
@@ -678,33 +710,33 @@
     <!-- Features -->
     <section class="features" id="features">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header r-up">
                 <h2>Driving Value for Fleets</h2>
                 <p>Trabajamos con flotas, concesionarios y proveedores de servicios para habilitar operaciones impulsadas por datos.</p>
             </div>
             <div class="features-grid">
-                <div class="feature">
+                <div class="feature r-up" style="--d:0ms">
                     <div class="feature-icon">
                         <i data-lucide="gauge" style="width:20px;height:20px;"></i>
                     </div>
                     <h3>Increase Efficiency</h3>
                     <p>Automated maintenance planning and fleet-level optimization balance operational needs.</p>
                 </div>
-                <div class="feature">
+                <div class="feature r-up" style="--d:90ms">
                     <div class="feature-icon">
                         <i data-lucide="trending-up" style="width:20px;height:20px;"></i>
                     </div>
                     <h3>Improve Performance</h3>
                     <p>Shift from reactive to proactive with precision maintenance plans that extend vehicle lifespan.</p>
                 </div>
-                <div class="feature">
+                <div class="feature r-up" style="--d:180ms">
                     <div class="feature-icon">
                         <i data-lucide="wallet" style="width:20px;height:20px;"></i>
                     </div>
                     <h3>Drive Savings</h3>
                     <p>Catch minor issues before they become major and reduce total cost of ownership.</p>
                 </div>
-                <div class="feature">
+                <div class="feature r-up" style="--d:270ms">
                     <div class="feature-icon">
                         <i data-lucide="clock" style="width:20px;height:20px;"></i>
                     </div>
@@ -718,12 +750,12 @@
     <!-- Process -->
     <section class="process" id="process">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header r-up">
                 <h2>Cómo funciona</h2>
                 <p>Integración sin fricciones con tus operaciones existentes en cinco pasos.</p>
             </div>
             <div class="process-flow">
-                <div class="process-item">
+                <div class="process-item r-left" style="--d:0ms">
                     <div class="process-num">1</div>
                     <div class="process-body">
                         <h3>Get vehicle data</h3>
@@ -731,7 +763,7 @@
                     </div>
                 </div>
                 <div class="process-line"></div>
-                <div class="process-item">
+                <div class="process-item r-left" style="--d:80ms">
                     <div class="process-num">2</div>
                     <div class="process-body">
                         <h3>Unlock new datapoints</h3>
@@ -739,7 +771,7 @@
                     </div>
                 </div>
                 <div class="process-line"></div>
-                <div class="process-item">
+                <div class="process-item r-left" style="--d:160ms">
                     <div class="process-num">3</div>
                     <div class="process-body">
                         <h3>Detect risks</h3>
@@ -747,7 +779,7 @@
                     </div>
                 </div>
                 <div class="process-line"></div>
-                <div class="process-item">
+                <div class="process-item r-left" style="--d:240ms">
                     <div class="process-num">4</div>
                     <div class="process-body">
                         <h3>Calibrate fleet actions</h3>
@@ -755,7 +787,7 @@
                     </div>
                 </div>
                 <div class="process-line"></div>
-                <div class="process-item">
+                <div class="process-item r-left" style="--d:320ms">
                     <div class="process-num">5</div>
                     <div class="process-body">
                         <h3>Optimize</h3>
@@ -769,7 +801,7 @@
     <!-- About -->
     <section class="about" id="about">
         <div class="container">
-            <div class="about-card">
+            <div class="about-card r-scale">
                 <img src="orion_6.jpg" alt="ORION" class="about-logo">
                 <h2>The ORION Way</h2>
                 <p>Our custom approach helps you leverage all your vehicle data and generate customized insights according to your maintenance strategy to optimize fleet health and operations.</p>
@@ -780,12 +812,12 @@
     <!-- Testimonials -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header r-up">
                 <h2>Our Clients Say</h2>
                 <p>Lo que opinan las empresas que confían en nuestra tecnología.</p>
             </div>
             <div class="testimonials-grid">
-                <div class="t-card">
+                <div class="t-card r-up" style="--d:0ms">
                     <div class="t-stars">
                         <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
                         <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
@@ -802,7 +834,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="t-card">
+                <div class="t-card r-up" style="--d:110ms">
                     <div class="t-stars">
                         <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
                         <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
@@ -819,7 +851,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="t-card">
+                <div class="t-card r-up" style="--d:220ms">
                     <div class="t-stars">
                         <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
                         <i data-lucide="star" style="width:14px;height:14px;fill:currentColor;"></i>
@@ -844,7 +876,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-wrap">
-                <div class="contact-info">
+                <div class="contact-info r-left">
                     <h2>Let's connect</h2>
                     <p>We're happy to talk to you and answer any questions you might have about optimizing your fleet with ORION.</p>
                     <div class="contact-item">
@@ -869,7 +901,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form r-right">
                     <form onsubmit="event.preventDefault(); alert('Thanks for reaching out! We will get back to you soon.');">
                         <div class="field">
                             <label for="name">Name</label>
@@ -915,10 +947,25 @@
 
     <script>
         lucide.createIcons();
+
+        // Nav scroll
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 40);
         });
+
+        // ===== SCROLL REVEAL =====
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('r-visible');
+                    revealObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.r-up, .r-left, .r-right, .r-scale')
+            .forEach(el => revealObserver.observe(el));
 
         // ===== HERO CANVAS: Fleet highway animation =====
         (function() {
@@ -936,8 +983,6 @@
             const W = () => canvas.offsetWidth;
             const H = () => canvas.offsetHeight;
 
-            // ---- Highway definitions ----
-            // Each highway: { y: fraction of H, laneH: px, dir: 1|-1 }
             let highways = [];
             function buildHighways() {
                 highways = [
@@ -950,7 +995,6 @@
             }
             buildHighways();
 
-            // ---- Truck pool ----
             const COLORS = ['#5fb8e6','#4a9fd4','#7ecef0','#3a8fc4'];
             function makeTruck(hw) {
                 const w = W();
@@ -965,8 +1009,6 @@
                     speed: hw.speed * (0.8 + Math.random() * 0.5) * hw.dir,
                     color: COLORS[Math.floor(Math.random() * COLORS.length)],
                     hw,
-                    label: null,
-                    labelAlpha: 0,
                     labelTimer: Math.random() * 300,
                 };
             }
@@ -978,7 +1020,6 @@
                     const count = 4 + Math.floor(Math.random() * 3);
                     for (let i = 0; i < count; i++) {
                         const t = makeTruck(hw);
-                        // spread across screen initially
                         t.x = Math.random() * (W() + 200) - 100;
                         trucks.push(t);
                     }
@@ -986,7 +1027,6 @@
             }
             initTrucks();
 
-            // ---- Data labels pool ----
             const DATA_LABELS = [
                 '87 km/h','94 km/h','102 km/h','76 km/h',
                 'RUTA-07','RUTA-12','RUTA-03',
@@ -1000,25 +1040,19 @@
                     x: truck.x + truck.w / 2,
                     y: truck.hw.yf * H() - truck.h - 14,
                     text: DATA_LABELS[Math.floor(Math.random() * DATA_LABELS.length)],
-                    alpha: 0,
-                    life: 0,
-                    maxLife: 120,
+                    alpha: 0, life: 0, maxLife: 120,
                 });
             }
 
-            // ---- Draw helpers ----
             function drawRoad(hw) {
                 const y = hw.yf * H();
                 const roadH = hw.laneH * 2.2;
-                // road surface
                 ctx.fillStyle = '#0d1120';
                 ctx.fillRect(0, y - roadH / 2, W(), roadH);
-                // subtle road border lines
                 ctx.strokeStyle = 'rgba(255,255,255,0.04)';
                 ctx.lineWidth = 1;
                 ctx.beginPath(); ctx.moveTo(0, y - roadH / 2); ctx.lineTo(W(), y - roadH / 2); ctx.stroke();
                 ctx.beginPath(); ctx.moveTo(0, y + roadH / 2); ctx.lineTo(W(), y + roadH / 2); ctx.stroke();
-                // center dashes
                 ctx.setLineDash([18, 14]);
                 ctx.strokeStyle = 'rgba(255,255,255,0.08)';
                 ctx.lineWidth = 1.5;
@@ -1029,8 +1063,6 @@
             function drawTruck(t) {
                 const y = t.hw.yf * H() - t.h / 2;
                 const going = t.hw.dir === 1;
-
-                // glow trail
                 const trailLen = t.w * 2.5;
                 const trailDir = going ? -1 : 1;
                 const grad = ctx.createLinearGradient(t.x, 0, t.x + trailDir * trailLen, 0);
@@ -1038,36 +1070,22 @@
                 grad.addColorStop(1, 'transparent');
                 ctx.fillStyle = grad;
                 ctx.fillRect(going ? t.x - trailLen : t.x + t.w, y, trailLen, t.h);
-
-                // truck body
                 ctx.fillStyle = '#1a2238';
                 ctx.beginPath();
                 ctx.roundRect(t.x, y, t.w, t.h, 3);
                 ctx.fill();
-
-                // cab highlight (front portion)
                 const cabW = t.w * 0.28;
                 ctx.fillStyle = '#222d44';
                 ctx.beginPath();
-                if (going) {
-                    ctx.roundRect(t.x + t.w - cabW, y, cabW, t.h, [0, 3, 3, 0]);
-                } else {
-                    ctx.roundRect(t.x, y, cabW, t.h, [3, 0, 0, 3]);
-                }
+                if (going) ctx.roundRect(t.x + t.w - cabW, y, cabW, t.h, [0, 3, 3, 0]);
+                else        ctx.roundRect(t.x, y, cabW, t.h, [3, 0, 0, 3]);
                 ctx.fill();
-
-                // colored side stripe
                 ctx.fillStyle = t.color + '55';
                 ctx.fillRect(t.x + 2, y + t.h * 0.35, t.w - 4, t.h * 0.12);
-
-                // headlights / taillights
-                const lgY = y + t.h * 0.22;
-                const lgY2 = y + t.h * 0.78;
+                const lgY = y + t.h * 0.22, lgY2 = y + t.h * 0.78;
                 if (going) {
-                    // headlights (right side = front)
                     drawLight(t.x + t.w - 3, lgY, '#e8f4ff', 6);
                     drawLight(t.x + t.w - 3, lgY2, '#e8f4ff', 6);
-                    // taillights (left side = rear)
                     drawLight(t.x + 3, lgY, '#ff3030', 5);
                     drawLight(t.x + 3, lgY2, '#ff3030', 5);
                 } else {
@@ -1083,7 +1101,6 @@
                 ctx.arc(x, y, size * 0.4, 0, Math.PI * 2);
                 ctx.fillStyle = color;
                 ctx.fill();
-                // glow
                 const g = ctx.createRadialGradient(x, y, 0, x, y, size);
                 g.addColorStop(0, color + 'cc');
                 g.addColorStop(1, color + '00');
@@ -1113,7 +1130,6 @@
                 ctx.restore();
             }
 
-            // ---- Background grid ----
             function drawGrid() {
                 ctx.strokeStyle = 'rgba(95,184,230,0.025)';
                 ctx.lineWidth = 1;
@@ -1126,72 +1142,44 @@
                 }
             }
 
-            // ---- Main loop ----
             let last = 0;
             function frame(ts) {
                 const dt = Math.min((ts - last) / 16.67, 3);
                 last = ts;
                 const w = W(), h = H();
-
-                // background
                 ctx.fillStyle = '#060914';
                 ctx.fillRect(0, 0, w, h);
-
                 drawGrid();
-
-                // roads
                 highways.forEach(hw => drawRoad(hw));
-
-                // update & draw trucks
                 trucks.forEach(t => {
                     t.x += t.speed * dt;
-                    t.y = t.hw.yf * h - t.h / 2;
-
-                    // label spawn
                     t.labelTimer -= dt;
                     if (t.labelTimer <= 0) {
                         spawnLabel(t);
                         t.labelTimer = 180 + Math.random() * 240;
                     }
-
-                    // wrap off-screen
-                    if (t.hw.dir === 1 && t.x > w + 60) {
-                        const nt = makeTruck(t.hw);
-                        Object.assign(t, nt);
-                    } else if (t.hw.dir === -1 && t.x + t.w < -60) {
-                        const nt = makeTruck(t.hw);
-                        Object.assign(t, nt);
-                    }
-
+                    if (t.hw.dir === 1 && t.x > w + 60) Object.assign(t, makeTruck(t.hw));
+                    else if (t.hw.dir === -1 && t.x + t.w < -60) Object.assign(t, makeTruck(t.hw));
                     drawTruck(t);
                 });
-
-                // update & draw labels
                 floatingLabels = floatingLabels.filter(lbl => {
                     lbl.life += dt;
                     const half = lbl.maxLife / 2;
-                    lbl.alpha = lbl.life < half
-                        ? lbl.life / half
-                        : 1 - (lbl.life - half) / half;
+                    lbl.alpha = lbl.life < half ? lbl.life / half : 1 - (lbl.life - half) / half;
                     lbl.y -= 0.15 * dt;
                     drawLabel(lbl);
                     return lbl.life < lbl.maxLife;
                 });
-
-                // top vignette
                 const topGrad = ctx.createLinearGradient(0, 0, 0, h * 0.35);
                 topGrad.addColorStop(0, '#060914');
                 topGrad.addColorStop(1, 'transparent');
                 ctx.fillStyle = topGrad;
                 ctx.fillRect(0, 0, w, h * 0.35);
-
-                // bottom vignette
                 const btmGrad = ctx.createLinearGradient(0, h * 0.65, 0, h);
                 btmGrad.addColorStop(0, 'transparent');
                 btmGrad.addColorStop(1, '#060914');
                 ctx.fillStyle = btmGrad;
                 ctx.fillRect(0, h * 0.65, w, h * 0.35);
-
                 requestAnimationFrame(frame);
             }
             requestAnimationFrame(frame);
