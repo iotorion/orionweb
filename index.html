@@ -124,93 +124,14 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            background: linear-gradient(180deg, #0a1020 0%, #060914 40%, #04060d 100%);
+            background: #060914;
         }
-        .hero-stars {
+        #heroCanvas {
             position: absolute;
             inset: 0;
-            background-image:
-                radial-gradient(2px 2px at 20px 30px, rgba(200,220,255,0.3), transparent),
-                radial-gradient(2px 2px at 40px 70px, rgba(200,220,255,0.2), transparent),
-                radial-gradient(1px 1px at 90px 40px, rgba(200,220,255,0.3), transparent),
-                radial-gradient(2px 2px at 160px 120px, rgba(200,220,255,0.2), transparent),
-                radial-gradient(1px 1px at 230px 80px, rgba(200,220,255,0.3), transparent),
-                radial-gradient(2px 2px at 300px 50px, rgba(200,220,255,0.15), transparent),
-                radial-gradient(1px 1px at 350px 150px, rgba(200,220,255,0.25), transparent),
-                radial-gradient(2px 2px at 450px 90px, rgba(200,220,255,0.2), transparent),
-                radial-gradient(1px 1px at 520px 40px, rgba(200,220,255,0.3), transparent),
-                radial-gradient(2px 2px at 600px 130px, rgba(200,220,255,0.15), transparent),
-                radial-gradient(1px 1px at 680px 60px, rgba(200,220,255,0.25), transparent),
-                radial-gradient(2px 2px at 750px 110px, rgba(200,220,255,0.2), transparent),
-                radial-gradient(1px 1px at 820px 30px, rgba(200,220,255,0.3), transparent),
-                radial-gradient(2px 2px at 900px 80px, rgba(200,220,255,0.15), transparent),
-                radial-gradient(1px 1px at 980px 140px, rgba(200,220,255,0.25), transparent),
-                radial-gradient(2px 2px at 1050px 50px, rgba(200,220,255,0.2), transparent),
-                radial-gradient(1px 1px at 1120px 100px, rgba(200,220,255,0.3), transparent),
-                radial-gradient(2px 2px at 1200px 70px, rgba(200,220,255,0.15), transparent),
-                radial-gradient(1px 1px at 1280px 120px, rgba(200,220,255,0.25), transparent);
-            background-repeat: repeat;
-            background-size: 1300px 200px;
-            animation: starMove 120s linear infinite;
-        }
-        @keyframes starMove {
-            from { background-position: 0 0; }
-            to { background-position: -1300px 0; }
-        }
-        .hero-road {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
             width: 100%;
-            height: 45%;
-            background: linear-gradient(180deg, transparent 0%, rgba(8,12,26,0.8) 30%, #050818 100%);
-        }
-        .hero-road-line {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
             height: 100%;
-            background: repeating-linear-gradient(
-                to bottom,
-                rgba(200,210,230,0.4) 0px,
-                rgba(200,210,230,0.4) 20px,
-                transparent 20px,
-                transparent 50px
-            );
-            animation: roadLineMove 1.5s linear infinite;
-        }
-        @keyframes roadLineMove {
-            from { background-position: 0 0; }
-            to { background-position: 0 70px; }
-        }
-        .hero-car-left, .hero-car-right {
-            position: absolute;
-            bottom: 15%;
-            width: 6px;
-            height: 3px;
-            border-radius: 50%;
-            animation: carDrive 4s linear infinite;
-        }
-        .hero-car-left {
-            left: 48%;
-            background: rgba(255, 60, 60, 0.9);
-            box-shadow: 0 0 10px rgba(255, 60, 60, 0.6), 0 0 30px rgba(255, 60, 60, 0.3);
-            animation-delay: 0s;
-        }
-        .hero-car-right {
-            left: 52%;
-            background: rgba(220, 240, 255, 0.95);
-            box-shadow: 0 0 10px rgba(95, 184, 230, 0.7), 0 0 30px rgba(95, 184, 230, 0.4);
-            animation-delay: 2s;
-        }
-        @keyframes carDrive {
-            0% { transform: translateY(0) scale(0.5); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-300px) scale(2.5); opacity: 0; }
+            display: block;
         }
         .hero-overlay {
             position: absolute;
@@ -716,12 +637,7 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-stars"></div>
-        <div class="hero-road">
-            <div class="hero-road-line"></div>
-        </div>
-        <div class="hero-car-left"></div>
-        <div class="hero-car-right"></div>
+        <canvas id="heroCanvas"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-eyebrow">
@@ -1003,6 +919,283 @@
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 40);
         });
+
+        // ===== HERO CANVAS: Fleet highway animation =====
+        (function() {
+            const canvas = document.getElementById('heroCanvas');
+            const ctx = canvas.getContext('2d');
+
+            function resize() {
+                canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+                canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+                ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            }
+            window.addEventListener('resize', () => { resize(); buildHighways(); });
+            resize();
+
+            const W = () => canvas.offsetWidth;
+            const H = () => canvas.offsetHeight;
+
+            // ---- Highway definitions ----
+            // Each highway: { y: fraction of H, laneH: px, dir: 1|-1 }
+            let highways = [];
+            function buildHighways() {
+                highways = [
+                    { yf: 0.22, laneH: 28, dir: 1,  speed: 1.8 },
+                    { yf: 0.38, laneH: 34, dir: -1, speed: 2.2 },
+                    { yf: 0.55, laneH: 34, dir: 1,  speed: 1.6 },
+                    { yf: 0.70, laneH: 28, dir: -1, speed: 2.5 },
+                    { yf: 0.84, laneH: 22, dir: 1,  speed: 1.4 },
+                ];
+            }
+            buildHighways();
+
+            // ---- Truck pool ----
+            const COLORS = ['#5fb8e6','#4a9fd4','#7ecef0','#3a8fc4'];
+            function makeTruck(hw) {
+                const w = W();
+                const going = hw.dir === 1;
+                const tw = 52 + Math.random() * 28;
+                const th = hw.laneH * 0.62;
+                return {
+                    x: going ? -tw - Math.random() * w : w + Math.random() * w,
+                    y: 0,
+                    w: tw,
+                    h: th,
+                    speed: hw.speed * (0.8 + Math.random() * 0.5) * hw.dir,
+                    color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                    hw,
+                    label: null,
+                    labelAlpha: 0,
+                    labelTimer: Math.random() * 300,
+                };
+            }
+
+            let trucks = [];
+            function initTrucks() {
+                trucks = [];
+                highways.forEach(hw => {
+                    const count = 4 + Math.floor(Math.random() * 3);
+                    for (let i = 0; i < count; i++) {
+                        const t = makeTruck(hw);
+                        // spread across screen initially
+                        t.x = Math.random() * (W() + 200) - 100;
+                        trucks.push(t);
+                    }
+                });
+            }
+            initTrucks();
+
+            // ---- Data labels pool ----
+            const DATA_LABELS = [
+                '87 km/h','94 km/h','102 km/h','76 km/h',
+                'RUTA-07','RUTA-12','RUTA-03',
+                'ETA 14:32','ETA 09:18','ETA 17:45',
+                '98% uptime','Motor OK','Temp 82°C',
+            ];
+            let floatingLabels = [];
+
+            function spawnLabel(truck) {
+                floatingLabels.push({
+                    x: truck.x + truck.w / 2,
+                    y: truck.hw.yf * H() - truck.h - 14,
+                    text: DATA_LABELS[Math.floor(Math.random() * DATA_LABELS.length)],
+                    alpha: 0,
+                    life: 0,
+                    maxLife: 120,
+                });
+            }
+
+            // ---- Draw helpers ----
+            function drawRoad(hw) {
+                const y = hw.yf * H();
+                const roadH = hw.laneH * 2.2;
+                // road surface
+                ctx.fillStyle = '#0d1120';
+                ctx.fillRect(0, y - roadH / 2, W(), roadH);
+                // subtle road border lines
+                ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+                ctx.lineWidth = 1;
+                ctx.beginPath(); ctx.moveTo(0, y - roadH / 2); ctx.lineTo(W(), y - roadH / 2); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, y + roadH / 2); ctx.lineTo(W(), y + roadH / 2); ctx.stroke();
+                // center dashes
+                ctx.setLineDash([18, 14]);
+                ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W(), y); ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            function drawTruck(t) {
+                const y = t.hw.yf * H() - t.h / 2;
+                const going = t.hw.dir === 1;
+
+                // glow trail
+                const trailLen = t.w * 2.5;
+                const trailDir = going ? -1 : 1;
+                const grad = ctx.createLinearGradient(t.x, 0, t.x + trailDir * trailLen, 0);
+                grad.addColorStop(0, t.color + '30');
+                grad.addColorStop(1, 'transparent');
+                ctx.fillStyle = grad;
+                ctx.fillRect(going ? t.x - trailLen : t.x + t.w, y, trailLen, t.h);
+
+                // truck body
+                ctx.fillStyle = '#1a2238';
+                ctx.beginPath();
+                ctx.roundRect(t.x, y, t.w, t.h, 3);
+                ctx.fill();
+
+                // cab highlight (front portion)
+                const cabW = t.w * 0.28;
+                ctx.fillStyle = '#222d44';
+                ctx.beginPath();
+                if (going) {
+                    ctx.roundRect(t.x + t.w - cabW, y, cabW, t.h, [0, 3, 3, 0]);
+                } else {
+                    ctx.roundRect(t.x, y, cabW, t.h, [3, 0, 0, 3]);
+                }
+                ctx.fill();
+
+                // colored side stripe
+                ctx.fillStyle = t.color + '55';
+                ctx.fillRect(t.x + 2, y + t.h * 0.35, t.w - 4, t.h * 0.12);
+
+                // headlights / taillights
+                const lgY = y + t.h * 0.22;
+                const lgY2 = y + t.h * 0.78;
+                if (going) {
+                    // headlights (right side = front)
+                    drawLight(t.x + t.w - 3, lgY, '#e8f4ff', 6);
+                    drawLight(t.x + t.w - 3, lgY2, '#e8f4ff', 6);
+                    // taillights (left side = rear)
+                    drawLight(t.x + 3, lgY, '#ff3030', 5);
+                    drawLight(t.x + 3, lgY2, '#ff3030', 5);
+                } else {
+                    drawLight(t.x + 3, lgY, '#e8f4ff', 6);
+                    drawLight(t.x + 3, lgY2, '#e8f4ff', 6);
+                    drawLight(t.x + t.w - 3, lgY, '#ff3030', 5);
+                    drawLight(t.x + t.w - 3, lgY2, '#ff3030', 5);
+                }
+            }
+
+            function drawLight(x, y, color, size) {
+                ctx.beginPath();
+                ctx.arc(x, y, size * 0.4, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.fill();
+                // glow
+                const g = ctx.createRadialGradient(x, y, 0, x, y, size);
+                g.addColorStop(0, color + 'cc');
+                g.addColorStop(1, color + '00');
+                ctx.fillStyle = g;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            function drawLabel(lbl) {
+                ctx.save();
+                ctx.globalAlpha = lbl.alpha;
+                ctx.font = '500 10px Inter, sans-serif';
+                const tw = ctx.measureText(lbl.text).width;
+                const pad = 6;
+                ctx.fillStyle = 'rgba(13,18,34,0.85)';
+                ctx.beginPath();
+                ctx.roundRect(lbl.x - tw/2 - pad, lbl.y - 11, tw + pad*2, 18, 3);
+                ctx.fill();
+                ctx.strokeStyle = 'rgba(95,184,230,0.35)';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                ctx.fillStyle = '#5fb8e6';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(lbl.text, lbl.x, lbl.y - 2);
+                ctx.restore();
+            }
+
+            // ---- Background grid ----
+            function drawGrid() {
+                ctx.strokeStyle = 'rgba(95,184,230,0.025)';
+                ctx.lineWidth = 1;
+                const step = 60;
+                for (let x = 0; x < W(); x += step) {
+                    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H()); ctx.stroke();
+                }
+                for (let y = 0; y < H(); y += step) {
+                    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W(), y); ctx.stroke();
+                }
+            }
+
+            // ---- Main loop ----
+            let last = 0;
+            function frame(ts) {
+                const dt = Math.min((ts - last) / 16.67, 3);
+                last = ts;
+                const w = W(), h = H();
+
+                // background
+                ctx.fillStyle = '#060914';
+                ctx.fillRect(0, 0, w, h);
+
+                drawGrid();
+
+                // roads
+                highways.forEach(hw => drawRoad(hw));
+
+                // update & draw trucks
+                trucks.forEach(t => {
+                    t.x += t.speed * dt;
+                    t.y = t.hw.yf * h - t.h / 2;
+
+                    // label spawn
+                    t.labelTimer -= dt;
+                    if (t.labelTimer <= 0) {
+                        spawnLabel(t);
+                        t.labelTimer = 180 + Math.random() * 240;
+                    }
+
+                    // wrap off-screen
+                    if (t.hw.dir === 1 && t.x > w + 60) {
+                        const nt = makeTruck(t.hw);
+                        Object.assign(t, nt);
+                    } else if (t.hw.dir === -1 && t.x + t.w < -60) {
+                        const nt = makeTruck(t.hw);
+                        Object.assign(t, nt);
+                    }
+
+                    drawTruck(t);
+                });
+
+                // update & draw labels
+                floatingLabels = floatingLabels.filter(lbl => {
+                    lbl.life += dt;
+                    const half = lbl.maxLife / 2;
+                    lbl.alpha = lbl.life < half
+                        ? lbl.life / half
+                        : 1 - (lbl.life - half) / half;
+                    lbl.y -= 0.15 * dt;
+                    drawLabel(lbl);
+                    return lbl.life < lbl.maxLife;
+                });
+
+                // top vignette
+                const topGrad = ctx.createLinearGradient(0, 0, 0, h * 0.35);
+                topGrad.addColorStop(0, '#060914');
+                topGrad.addColorStop(1, 'transparent');
+                ctx.fillStyle = topGrad;
+                ctx.fillRect(0, 0, w, h * 0.35);
+
+                // bottom vignette
+                const btmGrad = ctx.createLinearGradient(0, h * 0.65, 0, h);
+                btmGrad.addColorStop(0, 'transparent');
+                btmGrad.addColorStop(1, '#060914');
+                ctx.fillStyle = btmGrad;
+                ctx.fillRect(0, h * 0.65, w, h * 0.35);
+
+                requestAnimationFrame(frame);
+            }
+            requestAnimationFrame(frame);
+        })();
     </script>
 </body>
 </html>
