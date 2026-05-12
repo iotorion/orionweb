@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORION — Tecnología Avanzada para el Futuro</title>
-    <meta name="description" content="ORION ofrece soluciones tecnológicas de vanguardia para impulsar la innovación y el crecimiento empresarial.">
+    <title>ORION — Plataforma IoT para Operaciones Inteligentes</title>
+    <meta name="description" content="ORION conecta tus activos físicos con inteligencia digital. Plataforma IoT para monitoreo, análisis y optimización de operaciones en tiempo real.">
     <link rel="icon" type="image/png" href="orion_iso2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,13 +70,6 @@
         .section-header { text-align:center; margin-bottom:3.5rem; }
         .section-header h2 { font-family:'Space Grotesk',sans-serif; font-size:clamp(1.7rem,3.5vw,2.5rem); color:var(--white); margin-bottom:0.6rem; font-weight:700; letter-spacing:-0.01em; }
         .section-header p { color:var(--silver); font-size:1rem; max-width:520px; margin:0 auto; line-height:1.7; }
-
-        /* PARTNERS */
-        .partners { padding:3rem 0; background:rgba(13,18,34,0.6); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
-        .partners-label { text-align:center; font-size:0.68rem; color:var(--silver); text-transform:uppercase; letter-spacing:0.22em; margin-bottom:1.25rem; font-weight:600; opacity:0.6; }
-        .partners-row { display:flex; justify-content:center; align-items:center; gap:3rem; flex-wrap:wrap; }
-        .partner { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:0.95rem; color:var(--silver); opacity:0.3; transition:opacity 0.4s; letter-spacing:0.03em; }
-        .partner:hover { opacity:0.75; }
 
         /* FEATURES */
         .features { padding:5rem 0; background:var(--space); }
@@ -175,7 +168,7 @@
                 <span class="brand-text">ORION</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#features" data-i18n="nav.services">Servicios</a></li>
+                <li><a href="#features" data-i18n="nav.services">Plataforma</a></li>
                 <li><a href="#solutions" data-i18n="nav.solutions">Soluciones</a></li>
                 <li><a href="#process" data-i18n="nav.process">Cómo funciona</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
@@ -195,11 +188,11 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-eyebrow">
-                <i data-lucide="sparkle" style="width:14px;height:14px;"></i>
-                <span data-i18n="hero.eyebrow">Tecnología de próxima generación</span>
+                <i data-lucide="cpu" style="width:14px;height:14px;"></i>
+                <span data-i18n="hero.eyebrow">Plataforma IoT de próxima generación</span>
             </div>
-            <h1 data-i18n-html="hero.h1">Impulsa tu flota con <span>ORION</span></h1>
-            <p class="hero-desc" data-i18n="hero.desc">Soluciones inteligentes para el mantenimiento predictivo, optimización de rutas y gestión de flotas. Lleva tu operación logística al siguiente nivel.</p>
+            <h1 data-i18n-html="hero.h1">Conecta tu mundo con <span>ORION</span></h1>
+            <p class="hero-desc" data-i18n="hero.desc">Plataforma IoT para conectar, monitorear y optimizar tus activos en tiempo real. Transforma datos en decisiones inteligentes.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-light">
                     <span data-i18n="hero.cta">Solicitar demo</span>
@@ -213,45 +206,32 @@
         </div>
     </section>
 
-    <section class="partners">
-        <div class="container">
-            <p class="partners-label r-up" data-i18n="partners.label">Confían en ORION</p>
-            <div class="partners-row">
-                <span class="partner r-up" style="--d:50ms">LogiTech</span>
-                <span class="partner r-up" style="--d:120ms">TransGlobal</span>
-                <span class="partner r-up" style="--d:190ms">FleetPro</span>
-                <span class="partner r-up" style="--d:260ms">CargoMax</span>
-                <span class="partner r-up" style="--d:330ms">RouteAI</span>
-            </div>
-        </div>
-    </section>
-
     <section class="features" id="features">
         <div class="container">
             <div class="section-header r-up">
-                <h2 data-i18n="features.h2">Valor para tu flota</h2>
-                <p data-i18n="features.p">Trabajamos con flotas, concesionarios y proveedores de servicios para habilitar operaciones impulsadas por datos.</p>
+                <h2 data-i18n="features.h2">El valor de conectar tus activos</h2>
+                <p data-i18n="features.p">Conectamos dispositivos, sensores y sistemas para que tus operaciones estén siempre informadas y en control.</p>
             </div>
             <div class="features-grid">
                 <div class="feature r-up" style="--d:0ms">
-                    <div class="feature-icon"><i data-lucide="gauge" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f1.h3">Mayor eficiencia</h3>
-                    <p data-i18n="f1.p">La planificación automatizada del mantenimiento y la optimización de flota equilibran las necesidades operativas.</p>
+                    <div class="feature-icon"><i data-lucide="radio" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="f1.h3">Conectividad total</h3>
+                    <p data-i18n="f1.p">Integra cualquier dispositivo o sensor con protocolos estándar — MQTT, HTTP, Modbus — sin cambiar tu infraestructura.</p>
                 </div>
                 <div class="feature r-up" style="--d:90ms">
-                    <div class="feature-icon"><i data-lucide="trending-up" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f2.h3">Mejor rendimiento</h3>
-                    <p data-i18n="f2.p">Pasa de reactivo a proactivo con planes de mantenimiento de precisión que extienden la vida útil del vehículo.</p>
+                    <div class="feature-icon"><i data-lucide="activity" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="f2.h3">Visibilidad en tiempo real</h3>
+                    <p data-i18n="f2.p">Monitorea el estado de todos tus activos desde un único dashboard, con alertas instantáneas ante cualquier anomalía.</p>
                 </div>
                 <div class="feature r-up" style="--d:180ms">
-                    <div class="feature-icon"><i data-lucide="wallet" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f3.h3">Reducción de costos</h3>
-                    <p data-i18n="f3.p">Detecta problemas menores antes de que se vuelvan mayores y reduce el costo total de propiedad.</p>
+                    <div class="feature-icon"><i data-lucide="brain" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="f3.h3">Inteligencia predictiva</h3>
+                    <p data-i18n="f3.p">Modelos de IA entrenados por activo detectan patrones de falla antes de que ocurran y reducen el costo operativo.</p>
                 </div>
                 <div class="feature r-up" style="--d:270ms">
-                    <div class="feature-icon"><i data-lucide="clock" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f4.h3">Mayor disponibilidad</h3>
-                    <p data-i18n="f4.p">El mantenimiento correcto para el vehículo correcto en el momento correcto minimiza las averías.</p>
+                    <div class="feature-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="f4.h3">Escala sin límites</h3>
+                    <p data-i18n="f4.p">Desde 10 hasta 100.000 dispositivos conectados — la plataforma crece con tu operación sin fricción ni rediseño.</p>
                 </div>
             </div>
         </div>
@@ -260,44 +240,44 @@
     <section class="solutions" id="solutions">
         <div class="container">
             <div class="section-header r-up">
-                <h2 data-i18n="solutions.h2">Soluciones para cada desafío</h2>
-                <p data-i18n="solutions.p">ORION cubre el ciclo completo de la operación logística — desde la eficiencia del vehículo hasta el cumplimiento normativo.</p>
+                <h2 data-i18n="solutions.h2">Soluciones IoT para cada industria</h2>
+                <p data-i18n="solutions.p">ORION conecta activos físicos con inteligencia digital — desde logística y manufactura hasta infraestructura y energía.</p>
             </div>
             <div class="solutions-grid">
                 <div class="solution-card r-up" style="--d:0ms">
-                    <div class="solution-icon"><i data-lucide="zap" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s1.h3">Productividad</h3>
-                    <p data-i18n="s1.p">Automatiza la planificación de mantenimiento y libera a tu equipo para enfocarse en lo que realmente importa.</p>
+                    <div class="solution-icon"><i data-lucide="plug" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="s1.h3">Gestión de dispositivos</h3>
+                    <p data-i18n="s1.p">Registra, configura y actualiza remotamente todos tus dispositivos IoT desde una consola centralizada y segura.</p>
                     <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:80ms">
-                    <div class="solution-icon"><i data-lucide="map" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s2.h3">Optimización de rutas</h3>
-                    <p data-i18n="s2.p">Analiza recorridos en tiempo real para reducir kilómetros muertos, tiempos de entrega y consumo de combustible.</p>
+                    <div class="solution-icon"><i data-lucide="bar-chart-2" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="s2.h3">Analítica de datos</h3>
+                    <p data-i18n="s2.p">Transforma el flujo de datos de tus sensores en dashboards, reportes y alertas accionables para tu equipo.</p>
                     <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:160ms">
-                    <div class="solution-icon"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s3.h3">Seguridad</h3>
-                    <p data-i18n="s3.p">Detecta comportamientos de riesgo al volante y condiciones mecánicas críticas antes de que generen incidentes.</p>
+                    <div class="solution-icon"><i data-lucide="bell" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="s3.h3">Alertas inteligentes</h3>
+                    <p data-i18n="s3.p">Define umbrales y reglas de negocio para recibir notificaciones precisas cuando algo sale de los parámetros esperados.</p>
                     <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:240ms">
-                    <div class="solution-icon"><i data-lucide="leaf" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s4.h3">Sostenibilidad</h3>
-                    <p data-i18n="s4.p">Mide y reduce la huella de carbono de tu flota con reportes de emisiones y estrategias de conducción eficiente.</p>
+                    <div class="solution-icon"><i data-lucide="git-merge" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="s4.h3">Integraciones</h3>
+                    <p data-i18n="s4.p">Conecta ORION con tus sistemas ERP, CRM o CMMS mediante APIs REST y webhooks sin desarrollo a medida.</p>
                     <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:320ms">
-                    <div class="solution-icon"><i data-lucide="file-check" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s5.h3">Cumplimiento normativo</h3>
-                    <p data-i18n="s5.p">Mantén registros automáticos de inspecciones, licencias y mantenimientos para auditorías sin fricción.</p>
+                    <div class="solution-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="s5.h3">Seguridad y cumplimiento</h3>
+                    <p data-i18n="s5.p">Comunicaciones cifradas, control de acceso granular y trazabilidad completa para cumplir con estándares industriales.</p>
                     <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
                 <div class="solution-card r-up" style="--d:400ms">
-                    <div class="solution-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s6.h3">Escalabilidad</h3>
-                    <p data-i18n="s6.p">Desde 10 hasta 10.000 vehículos — ORION crece contigo sin cambiar de plataforma ni de proveedor.</p>
+                    <div class="solution-icon"><i data-lucide="cloud" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="s6.h3">Edge &amp; Cloud</h3>
+                    <p data-i18n="s6.p">Procesa datos en el borde para latencia mínima y sincroniza con la nube para análisis histórico y machine learning.</p>
                     <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
                 </div>
             </div>
@@ -308,46 +288,46 @@
         <div class="container">
             <div class="section-header r-up">
                 <h2 data-i18n="process.h2">Cómo funciona</h2>
-                <p data-i18n="process.p">Integración sin fricciones con tus operaciones existentes en cinco pasos.</p>
+                <p data-i18n="process.p">Despliegue IoT sin fricciones en cinco pasos, integrado con tus operaciones existentes.</p>
             </div>
             <div class="process-flow">
                 <div class="process-item r-left" style="--d:0ms">
                     <div class="process-num">1</div>
                     <div class="process-body">
-                        <h3 data-i18n="p1.h3">Obtenemos los datos del vehículo</h3>
-                        <p data-i18n="p1.p">Conectamos con tus datos de telemetría y flota existentes en la nube, sin hardware adicional.</p>
+                        <h3 data-i18n="p1.h3">Conectamos tus dispositivos</h3>
+                        <p data-i18n="p1.p">Integramos tus sensores, gateways y activos existentes con la plataforma mediante protocolos estándar IoT.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:80ms">
                     <div class="process-num">2</div>
                     <div class="process-body">
-                        <h3 data-i18n="p2.h3">Desbloqueamos nuevos indicadores</h3>
-                        <p data-i18n="p2.p">Sensores virtuales propietarios miden las condiciones del vehículo y la salud del sistema en tiempo real.</p>
+                        <h3 data-i18n="p2.h3">Procesamos los datos en tiempo real</h3>
+                        <p data-i18n="p2.p">El motor de procesamiento de ORION normaliza, filtra y enriquece cada evento al instante en que llega.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:160ms">
                     <div class="process-num">3</div>
                     <div class="process-body">
-                        <h3 data-i18n="p3.h3">Detectamos riesgos</h3>
-                        <p data-i18n="p3.p">Los modelos se entrenan por vehículo individual para detectar riesgos antes del primer código de falla.</p>
+                        <h3 data-i18n="p3.h3">Detectamos anomalías y patrones</h3>
+                        <p data-i18n="p3.p">Los modelos de IA aprenden el comportamiento de cada activo y detectan desviaciones antes de que generen problemas.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:240ms">
                     <div class="process-num">4</div>
                     <div class="process-body">
-                        <h3 data-i18n="p4.h3">Calibramos las acciones de la flota</h3>
-                        <p data-i18n="p4.p">Aprendizaje continuo a partir del comportamiento en tiempo real para intervenir antes de averías.</p>
+                        <h3 data-i18n="p4.h3">Generamos insights accionables</h3>
+                        <p data-i18n="p4.p">Alertas, reportes y recomendaciones llegan al equipo correcto en el momento correcto para tomar decisiones rápidas.</p>
                     </div>
                 </div>
                 <div class="process-line"></div>
                 <div class="process-item r-left" style="--d:320ms">
                     <div class="process-num">5</div>
                     <div class="process-body">
-                        <h3 data-i18n="p5.h3">Optimizamos</h3>
-                        <p data-i18n="p5.p">Integramos la salud del vehículo y la detección de riesgos en los flujos de trabajo existentes para un uptime sin límites.</p>
+                        <h3 data-i18n="p5.h3">Optimizamos continuamente</h3>
+                        <p data-i18n="p5.p">Cada ciclo de datos retroalimenta los modelos para mejorar la precisión de las predicciones y el rendimiento operativo.</p>
                     </div>
                 </div>
             </div>
@@ -358,8 +338,8 @@
         <div class="container">
             <div class="about-card r-scale">
                 <img src="orion_6.jpg" alt="ORION" class="about-logo">
-                <h2 data-i18n="about.h2">El camino ORION</h2>
-                <p data-i18n="about.p">Nuestro enfoque personalizado te ayuda a aprovechar todos tus datos vehiculares y generar insights adaptados a tu estrategia de mantenimiento para optimizar la salud y las operaciones de tu flota.</p>
+                <h2 data-i18n="about.h2">El enfoque ORION</h2>
+                <p data-i18n="about.p">Creemos que el valor del IoT no está en los datos sino en lo que haces con ellos. Por eso construimos una plataforma que va más allá de la conectividad: convierte cada señal de tus activos en inteligencia operativa, adaptada a tu industria y a tu estrategia.</p>
             </div>
         </div>
     </section>
@@ -369,18 +349,18 @@
             <div class="contact-wrap">
                 <div class="contact-info r-left">
                     <h2 data-i18n="contact.h2">Conectemos</h2>
-                    <p data-i18n="contact.p">Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación logística.</p>
+                    <p data-i18n="contact.p">Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación con IoT.</p>
                     <div class="contact-item">
                         <i data-lucide="map-pin" style="width:18px;height:18px;"></i>
                         <div><strong data-i18n="contact.hq">Sede central</strong><span>Los Militares 5620, Oficina 905<br>Las Condes, Región Metropolitana, Chile</span></div>
                     </div>
                     <div class="contact-item">
                         <i data-lucide="mail" style="width:18px;height:18px;"></i>
-                        <div><strong data-i18n="contact.email">Correo</strong><span>hola@orion.tech</span></div>
+                        <div><strong data-i18n="contact.email">Correo</strong><span>contacto@orion-iot.com</span></div>
                     </div>
                     <div class="contact-item">
                         <i data-lucide="phone" style="width:18px;height:18px;"></i>
-                        <div><strong data-i18n="contact.phone">Teléfono</strong><span>+52 (55) 1234-5678</span></div>
+                        <div><strong data-i18n="contact.phone">Teléfono</strong><span>+56 9 5670 7758</span></div>
                     </div>
                 </div>
                 <div class="contact-form r-right">
@@ -430,50 +410,49 @@
         // ===== I18N =====
         const T = {
             es: {
-                'nav.services':   'Servicios',
+                'nav.services':   'Plataforma',
                 'nav.solutions':  'Soluciones',
                 'nav.process':    'Cómo funciona',
                 'nav.contact':    'Contacto',
                 'nav.cta':        'Solicitar demo',
-                'hero.eyebrow':   'Tecnología de próxima generación',
-                'hero.h1':        'Impulsa tu flota con <span>ORION</span>',
-                'hero.desc':      'Soluciones inteligentes para el mantenimiento predictivo, optimización de rutas y gestión de flotas. Lleva tu operación logística al siguiente nivel.',
+                'hero.eyebrow':   'Plataforma IoT de próxima generación',
+                'hero.h1':        'Conecta tu mundo con <span>ORION</span>',
+                'hero.desc':      'Plataforma IoT para conectar, monitorear y optimizar tus activos en tiempo real. Transforma datos en decisiones inteligentes.',
                 'hero.cta':       'Solicitar demo',
                 'hero.how':       'Cómo funciona',
-                'partners.label': 'Confían en ORION',
-                'features.h2':    'Valor para tu flota',
-                'features.p':     'Trabajamos con flotas, concesionarios y proveedores de servicios para habilitar operaciones impulsadas por datos.',
-                'f1.h3': 'Mayor eficiencia',       'f1.p': 'La planificación automatizada del mantenimiento y la optimización de flota equilibran las necesidades operativas.',
-                'f2.h3': 'Mejor rendimiento',      'f2.p': 'Pasa de reactivo a proactivo con planes de mantenimiento de precisión que extienden la vida útil del vehículo.',
-                'f3.h3': 'Reducción de costos',    'f3.p': 'Detecta problemas menores antes de que se vuelvan mayores y reduce el costo total de propiedad.',
-                'f4.h3': 'Mayor disponibilidad',   'f4.p': 'El mantenimiento correcto para el vehículo correcto en el momento correcto minimiza las averías.',
-                'solutions.h2':      'Soluciones para cada desafío',
-                'solutions.p':       'ORION cubre el ciclo completo de la operación logística — desde la eficiencia del vehículo hasta el cumplimiento normativo.',
+                'features.h2':    'El valor de conectar tus activos',
+                'features.p':     'Conectamos dispositivos, sensores y sistemas para que tus operaciones estén siempre informadas y en control.',
+                'f1.h3': 'Conectividad total',        'f1.p': 'Integra cualquier dispositivo o sensor con protocolos estándar — MQTT, HTTP, Modbus — sin cambiar tu infraestructura.',
+                'f2.h3': 'Visibilidad en tiempo real','f2.p': 'Monitorea el estado de todos tus activos desde un único dashboard, con alertas instantáneas ante cualquier anomalía.',
+                'f3.h3': 'Inteligencia predictiva',   'f3.p': 'Modelos de IA entrenados por activo detectan patrones de falla antes de que ocurran y reducen el costo operativo.',
+                'f4.h3': 'Escala sin límites',         'f4.p': 'Desde 10 hasta 100.000 dispositivos conectados — la plataforma crece con tu operación sin fricción ni rediseño.',
+                'solutions.h2':      'Soluciones IoT para cada industria',
+                'solutions.p':       'ORION conecta activos físicos con inteligencia digital — desde logística y manufactura hasta infraestructura y energía.',
                 'solutions.explore': 'Explorar',
-                's1.h3': 'Productividad',              's1.p': 'Automatiza la planificación de mantenimiento y libera a tu equipo para enfocarse en lo que realmente importa.',
-                's2.h3': 'Optimización de rutas',      's2.p': 'Analiza recorridos en tiempo real para reducir kilómetros muertos, tiempos de entrega y consumo de combustible.',
-                's3.h3': 'Seguridad',                  's3.p': 'Detecta comportamientos de riesgo al volante y condiciones mecánicas críticas antes de que generen incidentes.',
-                's4.h3': 'Sostenibilidad',             's4.p': 'Mide y reduce la huella de carbono de tu flota con reportes de emisiones y estrategias de conducción eficiente.',
-                's5.h3': 'Cumplimiento normativo',     's5.p': 'Mantén registros automáticos de inspecciones, licencias y mantenimientos para auditorías sin fricción.',
-                's6.h3': 'Escalabilidad',              's6.p': 'Desde 10 hasta 10.000 vehículos — ORION crece contigo sin cambiar de plataforma ni de proveedor.',
+                's1.h3': 'Gestión de dispositivos',   's1.p': 'Registra, configura y actualiza remotamente todos tus dispositivos IoT desde una consola centralizada y segura.',
+                's2.h3': 'Analítica de datos',         's2.p': 'Transforma el flujo de datos de tus sensores en dashboards, reportes y alertas accionables para tu equipo.',
+                's3.h3': 'Alertas inteligentes',       's3.p': 'Define umbrales y reglas de negocio para recibir notificaciones precisas cuando algo sale de los parámetros esperados.',
+                's4.h3': 'Integraciones',               's4.p': 'Conecta ORION con tus sistemas ERP, CRM o CMMS mediante APIs REST y webhooks sin desarrollo a medida.',
+                's5.h3': 'Seguridad y cumplimiento',   's5.p': 'Comunicaciones cifradas, control de acceso granular y trazabilidad completa para cumplir con estándares industriales.',
+                's6.h3': 'Edge & Cloud',                's6.p': 'Procesa datos en el borde para latencia mínima y sincroniza con la nube para análisis histórico y machine learning.',
                 'process.h2': 'Cómo funciona',
-                'process.p':  'Integración sin fricciones con tus operaciones existentes en cinco pasos.',
-                'p1.h3': 'Obtenemos los datos del vehículo',      'p1.p': 'Conectamos con tus datos de telemetría y flota existentes en la nube, sin hardware adicional.',
-                'p2.h3': 'Desbloqueamos nuevos indicadores',       'p2.p': 'Sensores virtuales propietarios miden las condiciones del vehículo y la salud del sistema en tiempo real.',
-                'p3.h3': 'Detectamos riesgos',                     'p3.p': 'Los modelos se entrenan por vehículo individual para detectar riesgos antes del primer código de falla.',
-                'p4.h3': 'Calibramos las acciones de la flota',    'p4.p': 'Aprendizaje continuo a partir del comportamiento en tiempo real para intervenir antes de averías.',
-                'p5.h3': 'Optimizamos',                            'p5.p': 'Integramos la salud del vehículo y la detección de riesgos en los flujos de trabajo existentes para un uptime sin límites.',
-                'about.h2': 'El camino ORION',
-                'about.p':  'Nuestro enfoque personalizado te ayuda a aprovechar todos tus datos vehiculares y generar insights adaptados a tu estrategia de mantenimiento para optimizar la salud y las operaciones de tu flota.',
+                'process.p':  'Despliegue IoT sin fricciones en cinco pasos, integrado con tus operaciones existentes.',
+                'p1.h3': 'Conectamos tus dispositivos',          'p1.p': 'Integramos tus sensores, gateways y activos existentes con la plataforma mediante protocolos estándar IoT.',
+                'p2.h3': 'Procesamos los datos en tiempo real',  'p2.p': 'El motor de procesamiento de ORION normaliza, filtra y enriquece cada evento al instante en que llega.',
+                'p3.h3': 'Detectamos anomalías y patrones',      'p3.p': 'Los modelos de IA aprenden el comportamiento de cada activo y detectan desviaciones antes de que generen problemas.',
+                'p4.h3': 'Generamos insights accionables',       'p4.p': 'Alertas, reportes y recomendaciones llegan al equipo correcto en el momento correcto para tomar decisiones rápidas.',
+                'p5.h3': 'Optimizamos continuamente',            'p5.p': 'Cada ciclo de datos retroalimenta los modelos para mejorar la precisión de las predicciones y el rendimiento operativo.',
+                'about.h2': 'El enfoque ORION',
+                'about.p':  'Creemos que el valor del IoT no está en los datos sino en lo que haces con ellos. Por eso construimos una plataforma que va más allá de la conectividad: convierte cada señal de tus activos en inteligencia operativa, adaptada a tu industria y a tu estrategia.',
                 'contact.h2':    'Conectemos',
-                'contact.p':     'Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación logística.',
+                'contact.p':     'Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación con IoT.',
                 'contact.hq':    'Sede central',
                 'contact.email': 'Correo',
                 'contact.phone': 'Teléfono',
-                'form.name':       'Nombre',          'form.name.ph':    'Tu nombre completo',
-                'form.email':      'Correo electrónico', 'form.email.ph': 'tu@empresa.com',
-                'form.company':    'Empresa',          'form.company.ph': 'Nombre de empresa',
-                'form.message':    'Mensaje',          'form.message.ph': '¿En qué podemos ayudarte?',
+                'form.name':       'Nombre',             'form.name.ph':    'Tu nombre completo',
+                'form.email':      'Correo electrónico', 'form.email.ph':   'tu@empresa.com',
+                'form.company':    'Empresa',             'form.company.ph': 'Nombre de empresa',
+                'form.message':    'Mensaje',             'form.message.ph': '¿En qué podemos ayudarte?',
                 'form.submit':     'Enviar mensaje',
                 'form.alert':      '¡Gracias por escribirnos! Nos pondremos en contacto pronto.',
                 'footer.copy':    '© 2026 ORION Technologies. Todos los derechos reservados.',
@@ -481,43 +460,42 @@
                 'footer.terms':   'Términos',
             },
             en: {
-                'nav.services':   'Services',
+                'nav.services':   'Platform',
                 'nav.solutions':  'Solutions',
                 'nav.process':    'How it works',
                 'nav.contact':    'Contact',
                 'nav.cta':        'Request demo',
-                'hero.eyebrow':   'Next-generation technology',
-                'hero.h1':        'Power your fleet with <span>ORION</span>',
-                'hero.desc':      'Intelligent solutions for predictive maintenance, route optimization, and fleet management. Take your logistics operation to the next level.',
+                'hero.eyebrow':   'Next-generation IoT platform',
+                'hero.h1':        'Connect your world with <span>ORION</span>',
+                'hero.desc':      'IoT platform to connect, monitor, and optimize your assets in real time. Turn data into intelligent decisions.',
                 'hero.cta':       'Request demo',
                 'hero.how':       'How it works',
-                'partners.label': 'Trusted by',
-                'features.h2':    'Driving Value for Fleets',
-                'features.p':     'We work with fleets, dealers, and service providers to enable data-driven operations.',
-                'f1.h3': 'Increase Efficiency',    'f1.p': 'Automated maintenance planning and fleet-level optimization balance operational needs.',
-                'f2.h3': 'Improve Performance',    'f2.p': 'Shift from reactive to proactive with precision maintenance plans that extend vehicle lifespan.',
-                'f3.h3': 'Drive Savings',           'f3.p': 'Catch minor issues before they become major and reduce total cost of ownership.',
-                'f4.h3': 'Increase Uptime',         'f4.p': 'The right maintenance for the right vehicle at the right time minimizes breakdowns.',
-                'solutions.h2':      'Solutions for every challenge',
-                'solutions.p':       'ORION covers the full logistics operation cycle — from vehicle efficiency to regulatory compliance.',
+                'features.h2':    'The value of connecting your assets',
+                'features.p':     'We connect devices, sensors, and systems so your operations are always informed and in control.',
+                'f1.h3': 'Total connectivity',        'f1.p': 'Integrate any device or sensor using standard protocols — MQTT, HTTP, Modbus — without changing your infrastructure.',
+                'f2.h3': 'Real-time visibility',      'f2.p': 'Monitor the status of all your assets from a single dashboard, with instant alerts for any anomaly.',
+                'f3.h3': 'Predictive intelligence',   'f3.p': 'AI models trained per asset detect failure patterns before they occur and reduce operational costs.',
+                'f4.h3': 'Limitless scale',            'f4.p': 'From 10 to 100,000 connected devices — the platform grows with your operation without friction or redesign.',
+                'solutions.h2':      'IoT solutions for every industry',
+                'solutions.p':       'ORION connects physical assets with digital intelligence — from logistics and manufacturing to infrastructure and energy.',
                 'solutions.explore': 'Explore',
-                's1.h3': 'Productivity',             's1.p': 'Automate maintenance planning and free your team to focus on what really matters.',
-                's2.h3': 'Route Optimization',       's2.p': 'Analyze routes in real time to reduce deadhead miles, delivery times, and fuel consumption.',
-                's3.h3': 'Safety',                   's3.p': 'Detect risky driving behaviors and critical mechanical conditions before they cause incidents.',
-                's4.h3': 'Sustainability',            's4.p': 'Measure and reduce your fleet\'s carbon footprint with emissions reports and efficient driving strategies.',
-                's5.h3': 'Regulatory Compliance',    's5.p': 'Keep automatic records of inspections, licenses, and maintenance for frictionless audits.',
-                's6.h3': 'Scalability',               's6.p': 'From 10 to 10,000 vehicles — ORION grows with you without changing platform or provider.',
+                's1.h3': 'Device management',         's1.p': 'Register, configure, and remotely update all your IoT devices from a centralized, secure console.',
+                's2.h3': 'Data analytics',             's2.p': 'Turn your sensor data stream into dashboards, reports, and actionable alerts for your team.',
+                's3.h3': 'Smart alerts',               's3.p': 'Define thresholds and business rules to receive precise notifications when something goes outside expected parameters.',
+                's4.h3': 'Integrations',               's4.p': 'Connect ORION with your ERP, CRM, or CMMS via REST APIs and webhooks — no custom development needed.',
+                's5.h3': 'Security & compliance',      's5.p': 'Encrypted communications, granular access control, and full traceability to meet industrial standards.',
+                's6.h3': 'Edge & Cloud',                's6.p': 'Process data at the edge for minimum latency and sync to the cloud for historical analysis and machine learning.',
                 'process.h2': 'How it works',
-                'process.p':  'Frictionless integration with your existing operations in five steps.',
-                'p1.h3': 'Get vehicle data',            'p1.p': 'Connect to your existing telematics and fleet data in the cloud, with zero additional hardware.',
-                'p2.h3': 'Unlock new datapoints',       'p2.p': 'Proprietary virtual sensors measure vehicle conditions and system health in real time.',
-                'p3.h3': 'Detect risks',                'p3.p': 'Models train for each individual vehicle to accurately detect risks before the first fault code.',
-                'p4.h3': 'Calibrate fleet actions',     'p4.p': 'Continuous learning from real-time behavior to accurately intervene before breakdowns.',
-                'p5.h3': 'Optimize',                    'p5.p': 'Integrate vehicle health and risk detection into existing workflows for limitless uptime.',
-                'about.h2': 'The ORION Way',
-                'about.p':  'Our custom approach helps you leverage all your vehicle data and generate customized insights according to your maintenance strategy to optimize fleet health and operations.',
+                'process.p':  'Frictionless IoT deployment in five steps, integrated with your existing operations.',
+                'p1.h3': 'Connect your devices',              'p1.p': 'We integrate your existing sensors, gateways, and assets with the platform using standard IoT protocols.',
+                'p2.h3': 'Process data in real time',         'p2.p': 'ORION\'s processing engine normalizes, filters, and enriches every event the instant it arrives.',
+                'p3.h3': 'Detect anomalies and patterns',     'p3.p': 'AI models learn each asset\'s behavior and detect deviations before they cause problems.',
+                'p4.h3': 'Generate actionable insights',      'p4.p': 'Alerts, reports, and recommendations reach the right team at the right time for fast decision-making.',
+                'p5.h3': 'Continuously optimize',             'p5.p': 'Each data cycle feeds back into the models to improve prediction accuracy and operational performance.',
+                'about.h2': 'The ORION approach',
+                'about.p':  'We believe the value of IoT lies not in the data itself but in what you do with it. That\'s why we built a platform that goes beyond connectivity — turning every signal from your assets into operational intelligence, tailored to your industry and strategy.',
                 'contact.h2':    "Let's connect",
-                'contact.p':     "We're available to answer your questions and show you how ORION can transform your logistics operation.",
+                'contact.p':     "We're available to answer your questions and show you how ORION can transform your operation with IoT.",
                 'contact.hq':    'Headquarters',
                 'contact.email': 'Email',
                 'contact.phone': 'Phone',
