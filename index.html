@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ORION — Plataforma IoT para Operaciones Inteligentes</title>
-    <meta name="description" content="ORION conecta tus activos físicos con inteligencia digital. Plataforma IoT para monitoreo, análisis y optimización de operaciones en tiempo real.">
+    <title>ORION — Plataforma Industrial IoT para operaciones inteligentes</title>
+    <meta name="description" content="ORION es una plataforma Industrial IoT agnóstica al hardware que conecta activos, sistemas y fuentes de datos para entregar visibilidad en tiempo real, alertas inteligentes y decisiones operacionales.">
     <link rel="icon" type="image/png" href="orion_iso2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,6 +158,108 @@
             .hero-actions{flex-direction:column;align-items:center;}
             .btn-light,.btn-ghost{width:100%;max-width:260px;justify-content:center;}
         }
+
+        /* PILLARS */
+        .pillars-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:1.1rem; }
+        @media(max-width:1050px){.pillars-grid{grid-template-columns:repeat(3,1fr);}}
+        @media(max-width:700px){.pillars-grid{grid-template-columns:repeat(2,1fr);}}
+        @media(max-width:500px){.pillars-grid{grid-template-columns:1fr;}}
+
+        /* USE CASES */
+        .usecases-grid { grid-template-columns:repeat(4,1fr); }
+        @media(max-width:1050px){.usecases-grid{grid-template-columns:repeat(2,1fr);}}
+        @media(max-width:500px){.usecases-grid{grid-template-columns:1fr;}}
+        .usecases-grid .solution-card { padding:1.9rem 1.6rem; gap:0.7rem; }
+        .uc-row { font-size:0.85rem; line-height:1.55; }
+        .uc-row b { display:block; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:600; margin-bottom:0.15rem; }
+        .uc-pain b { color:var(--silver); opacity:0.6; }
+        .uc-pain span { color:var(--silver); opacity:0.85; }
+        .uc-value b { color:var(--accent); }
+        .uc-value span { color:var(--silver-light); }
+        .uc-cta { background:linear-gradient(145deg,#0f1a2e,var(--space-light)); justify-content:center; text-decoration:none; }
+        .uc-cta p { flex:0; }
+        .uc-cta .solution-arrow { opacity:1; transform:none; }
+
+        /* FLOW (CÓMO FUNCIONA) */
+        .process .section-header p { max-width:600px; }
+        .flow { display:grid; grid-template-columns:1fr 40px 1.05fr 40px 1fr; align-items:stretch; gap:0.5rem; }
+        .flow-arrow { display:flex; align-items:center; justify-content:center; color:var(--accent); opacity:0.6; }
+        @media(max-width:900px){ .flow{grid-template-columns:1fr;} .flow-arrow{transform:rotate(90deg); height:36px;} }
+        .flow-col { background:var(--space-light); border:1px solid var(--border); border-radius:16px; padding:1.5rem 1.3rem; }
+        .flow-col h4 { font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); font-weight:600; margin-bottom:0.25rem; }
+        .flow-col .flow-sub { color:var(--white); font-family:'Space Grotesk',sans-serif; font-size:1.1rem; font-weight:600; margin-bottom:1.1rem; }
+        .flow-item { display:flex; gap:0.75rem; align-items:flex-start; padding:0.7rem 0; border-top:1px solid var(--border); }
+        .flow-item:first-of-type { border-top:none; }
+        .flow-item i { color:var(--accent); flex-shrink:0; margin-top:0.15rem; }
+        .flow-item strong { display:block; color:var(--white); font-size:0.88rem; font-weight:600; }
+        .flow-item small { display:block; color:var(--silver); font-size:0.78rem; opacity:0.8; line-height:1.45; }
+        .flow-core { border-color:rgba(95,184,230,0.35); box-shadow:0 0 60px rgba(95,184,230,0.08) inset, 0 0 40px rgba(95,184,230,0.06); background:linear-gradient(160deg,#0f1a2e,var(--space-light)); }
+        .flow-core-brand { display:flex; align-items:center; gap:0.55rem; margin-bottom:0.25rem; }
+        .flow-core-brand img { width:30px; height:30px; border-radius:50%; object-fit:cover; }
+        .flow-core-brand span { font-family:'Space Grotesk',sans-serif; color:var(--white); font-weight:700; letter-spacing:0.08em; font-size:1.15rem; }
+        .flow-core .flow-item { background:rgba(95,184,230,0.05); border:1px solid rgba(95,184,230,0.12); border-radius:10px; padding:0.8rem 0.9rem; margin-top:0.55rem; align-items:center; }
+        .flow-tagline { text-align:center; margin-top:2.5rem; font-family:'Space Grotesk',sans-serif; color:var(--white); font-size:clamp(1.1rem,2.2vw,1.45rem); font-weight:600; line-height:1.4; }
+        .flow-tagline span { color:var(--accent); }
+
+        .flow-note { display:flex; align-items:center; gap:0.45rem; font-size:0.72rem; color:var(--silver-light); background:rgba(6,9,20,0.45); border:1px solid var(--border); border-radius:20px; padding:0.3rem 0.7rem; margin:0.2rem 0 0.3rem; width:fit-content; }
+        .flow-note i { color:var(--accent); }
+        .flow-ai { margin-top:0.9rem; border-radius:12px; padding:0.9rem 1rem; background:linear-gradient(135deg,rgba(95,184,230,0.16),rgba(126,206,240,0.05)); border:1px solid rgba(95,184,230,0.45); }
+        .flow-ai-head { display:flex; align-items:center; gap:0.5rem; color:var(--white); font-weight:600; font-size:0.9rem; margin-bottom:0.3rem; }
+        .flow-ai-head i { color:var(--accent); flex-shrink:0; }
+        .flow-ai-head span:not(.flow-ai-badge) { white-space:nowrap; }
+        .flow-ai-badge { margin-left:auto; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--space); background:var(--accent); border-radius:20px; padding:0.12rem 0.55rem; font-weight:700; white-space:nowrap; }
+        .flow-ai p { color:var(--silver-light); font-size:0.8rem; line-height:1.5; }
+        .flow-item.ai-out strong { color:var(--accent); }
+
+        /* RESOURCES */
+        .resources { padding:0 0 4rem; }
+        .resources .section-header { margin-bottom:2rem; }
+        .resource-card { display:flex; align-items:center; gap:1.5rem; background:var(--space-light); border:1px solid var(--border); border-radius:16px; padding:1.5rem 1.75rem; max-width:820px; margin:0 auto; transition:border-color 0.3s; }
+        .resource-card:hover { border-color:rgba(95,184,230,0.3); }
+        .resource-icon { width:56px; height:56px; border-radius:12px; background:var(--accent-glow); border:1px solid rgba(95,184,230,0.15); display:flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0; }
+        .resource-body { flex:1; }
+        .resource-body h3 { color:var(--white); font-size:1.05rem; font-weight:600; margin-bottom:0.25rem; }
+        .resource-body p { color:var(--silver); font-size:0.87rem; line-height:1.55; }
+        .resource-meta { display:block; margin-top:0.4rem; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--silver); opacity:0.65; }
+        .resource-card .btn-light { flex-shrink:0; padding:0.75rem 1.4rem; }
+        @media(max-width:640px){ .resource-card{flex-direction:column; align-items:flex-start;} .resource-card .btn-light{width:100%; max-width:none; justify-content:center;} }
+
+        /* MODULES */
+        .modules { padding:5rem 0; background:var(--space); }
+        .modules-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; }
+        @media(max-width:900px){.modules-grid{grid-template-columns:repeat(2,1fr);}}
+        @media(max-width:560px){.modules-grid{grid-template-columns:1fr;}}
+        .module { background:var(--space-light); border:1px solid var(--border); border-radius:14px; padding:1.6rem 1.5rem; display:flex; flex-direction:column; gap:0.5rem; }
+        .module-name { font-family:'Space Grotesk',sans-serif; color:var(--white); font-size:1.15rem; font-weight:600; display:flex; align-items:center; gap:0.6rem; }
+        .module-name i { color:var(--accent); }
+        .module-name em { font-style:normal; color:var(--accent); }
+        .module p { color:var(--silver); font-size:0.87rem; line-height:1.6; opacity:0.88; }
+        .module-tag { align-self:flex-start; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; color:var(--silver); border:1px solid var(--border); border-radius:20px; padding:0.15rem 0.6rem; }
+        .module.optional { border-style:dashed; background:transparent; }
+
+        /* PILOT */
+        .pilot { padding:2rem 0 5rem; }
+        .pilot-card { display:grid; grid-template-columns:1.1fr 1fr; gap:2.5rem; background:linear-gradient(145deg,#0f1a2e,var(--space-light)); border:1px solid rgba(95,184,230,0.2); border-radius:20px; padding:2.75rem 2.5rem; }
+        @media(max-width:850px){.pilot-card{grid-template-columns:1fr; padding:2rem 1.5rem;}}
+        .pilot-eyebrow { color:var(--accent); font-size:0.72rem; letter-spacing:0.16em; text-transform:uppercase; font-weight:600; }
+        .pilot-card h2 { font-family:'Space Grotesk',sans-serif; color:var(--white); font-size:clamp(1.5rem,3vw,2.1rem); margin:0.4rem 0 0.75rem; line-height:1.15; }
+        .pilot-card > div > p { color:var(--silver); font-size:0.95rem; line-height:1.7; margin-bottom:1.5rem; }
+        .pilot-steps { list-style:none; counter-reset:ps; display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1.75rem; }
+        .pilot-steps li { counter-increment:ps; display:flex; gap:0.8rem; color:var(--silver-light); font-size:0.9rem; align-items:baseline; }
+        .pilot-steps li::before { content:counter(ps); font-family:'Space Grotesk',sans-serif; color:var(--accent); font-weight:700; min-width:1.1rem; }
+        .pilot-kpis h3 { color:var(--white); font-size:0.95rem; font-weight:600; margin-bottom:0.9rem; }
+        .pilot-kpis ul { list-style:none; display:flex; flex-direction:column; gap:0.6rem; }
+        .pilot-kpis li { display:flex; gap:0.65rem; align-items:flex-start; color:var(--silver); font-size:0.88rem; line-height:1.5; background:rgba(6,9,20,0.4); border:1px solid var(--border); border-radius:10px; padding:0.7rem 0.85rem; }
+        .pilot-kpis li i { color:var(--accent); flex-shrink:0; margin-top:0.12rem; }
+
+        /* FORM STATUS */
+        .form-status { margin-top:0.9rem; font-size:0.85rem; line-height:1.5; display:none; }
+        .form-status.ok { display:block; color:#7ee0a8; }
+        .form-status.err { display:block; color:#f2a3a3; }
+        .hp { position:absolute; left:-9999px; }
+        .contact-form button[disabled] { opacity:0.6; cursor:wait; }
+        .about-card p + p { margin-top:1rem; }
+
     </style>
 </head>
 <body>
@@ -168,9 +270,10 @@
                 <span class="brand-text">ORION</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#features" data-i18n="nav.services">Plataforma</a></li>
-                <li><a href="#solutions" data-i18n="nav.solutions">Soluciones</a></li>
+                <li><a href="#platform" data-i18n="nav.platform">Plataforma</a></li>
+                <li><a href="#usecases" data-i18n="nav.usecases">Casos de uso</a></li>
                 <li><a href="#process" data-i18n="nav.process">Cómo funciona</a></li>
+                <li><a href="#modules" data-i18n="nav.modules">Módulos</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
             </ul>
             <div class="nav-right">
@@ -189,10 +292,10 @@
         <div class="hero-content">
             <div class="hero-eyebrow">
                 <i data-lucide="cpu" style="width:14px;height:14px;"></i>
-                <span data-i18n="hero.eyebrow">Plataforma IoT de próxima generación</span>
+                <span data-i18n="hero.eyebrow">Plataforma Industrial IoT · Agnóstica al hardware</span>
             </div>
-            <h1 data-i18n-html="hero.h1">Conecta tu mundo con <span>ORION</span></h1>
-            <p class="hero-desc" data-i18n="hero.desc">Plataforma IoT para conectar, monitorear y optimizar tus activos en tiempo real. Transforma datos en decisiones inteligentes.</p>
+            <h1 data-i18n-html="hero.h1">Convierte datos dispersos en <span>control operacional</span></h1>
+            <p class="hero-desc" data-i18n="hero.desc">ORION conecta los activos, sistemas y fuentes de datos que ya tienes para entregarte visibilidad en tiempo real, alertas inteligentes y mejores decisiones, sin quedar amarrado a un hardware o proveedor único.</p>
             <div class="hero-actions">
                 <a href="#contact" class="btn-light">
                     <span data-i18n="hero.cta">Solicitar demo</span>
@@ -206,130 +309,232 @@
         </div>
     </section>
 
-    <section class="features" id="features">
+    <!-- PLATAFORMA: 5 pilares -->
+    <section class="features" id="platform">
         <div class="container">
             <div class="section-header r-up">
-                <h2 data-i18n="features.h2">El valor de conectar tus activos</h2>
-                <p data-i18n="features.p">Conectamos dispositivos, sensores y sistemas para que tus operaciones estén siempre informadas y en control.</p>
+                <h2 data-i18n="platform.h2">Una capa de inteligencia sobre toda tu operación</h2>
+                <p data-i18n="platform.p">Tus datos vienen de sensores, equipos, PLC, SCADA, ERP, APIs y planillas de distintas marcas. ORION los une en una sola plataforma.</p>
             </div>
-            <div class="features-grid">
+            <div class="pillars-grid">
                 <div class="feature r-up" style="--d:0ms">
-                    <div class="feature-icon"><i data-lucide="radio" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f1.h3">Conectividad total</h3>
-                    <p data-i18n="f1.p">Integra cualquier dispositivo o sensor con protocolos estándar — MQTT, HTTP, Modbus — sin cambiar tu infraestructura.</p>
+                    <div class="feature-icon"><i data-lucide="plug-zap" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="k1.h3">Agnóstica al hardware</h3>
+                    <p data-i18n="k1.p">Integra los dispositivos y fuentes que ya tienes, sin quedar cautivo de una marca o tecnología.</p>
                 </div>
-                <div class="feature r-up" style="--d:90ms">
-                    <div class="feature-icon"><i data-lucide="activity" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f2.h3">Visibilidad en tiempo real</h3>
-                    <p data-i18n="f2.p">Monitorea el estado de todos tus activos desde un único dashboard, con alertas instantáneas ante cualquier anomalía.</p>
+                <div class="feature r-up" style="--d:80ms">
+                    <div class="feature-icon"><i data-lucide="factory" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="k2.h3">Multisectorial</h3>
+                    <p data-i18n="k2.p">Industria, energía, agua, minería, logística, agricultura, retail, edificios e infraestructura.</p>
                 </div>
-                <div class="feature r-up" style="--d:180ms">
-                    <div class="feature-icon"><i data-lucide="brain" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f3.h3">Inteligencia predictiva</h3>
-                    <p data-i18n="f3.p">Modelos de IA entrenados por activo detectan patrones de falla antes de que ocurran y reducen el costo operativo.</p>
+                <div class="feature r-up" style="--d:160ms">
+                    <div class="feature-icon"><i data-lucide="crosshair" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="k3.h3">Orientada a la operación</h3>
+                    <p data-i18n="k3.p">No solo visualiza: ayuda a detectar, priorizar, automatizar y ejecutar acciones.</p>
                 </div>
-                <div class="feature r-up" style="--d:270ms">
+                <div class="feature r-up" style="--d:240ms">
                     <div class="feature-icon"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="f4.h3">Escala sin límites</h3>
-                    <p data-i18n="f4.p">Desde 10 hasta 100.000 dispositivos conectados — la plataforma crece con tu operación sin fricción ni rediseño.</p>
+                    <h3 data-i18n="k4.h3">Escalable</h3>
+                    <p data-i18n="k4.p">Parte con un caso de uso y suma activos, sitios, sensores, usuarios e integraciones.</p>
+                </div>
+                <div class="feature r-up" style="--d:320ms">
+                    <div class="feature-icon"><i data-lucide="git-merge" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="k5.h3">Abierta</h3>
+                    <p data-i18n="k5.p">APIs y conectores para integrarse con tus plataformas empresariales.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="solutions" id="solutions">
+    <!-- CASOS DE USO -->
+    <section class="solutions" id="usecases">
         <div class="container">
             <div class="section-header r-up">
-                <h2 data-i18n="solutions.h2">Soluciones IoT para cada industria</h2>
-                <p data-i18n="solutions.p">ORION conecta activos físicos con inteligencia digital — desde logística y manufactura hasta infraestructura y energía.</p>
+                <h2 data-i18n="uc.h2">Casos de uso que generan valor</h2>
+                <p data-i18n="uc.p">Partimos por el problema operacional, no por el dispositivo.</p>
             </div>
-            <div class="solutions-grid">
+            <div class="solutions-grid usecases-grid">
                 <div class="solution-card r-up" style="--d:0ms">
-                    <div class="solution-icon"><i data-lucide="plug" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s1.h3">Gestión de dispositivos</h3>
-                    <p data-i18n="s1.p">Registra, configura y actualiza remotamente todos tus dispositivos IoT desde una consola centralizada y segura.</p>
-                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <div class="solution-icon"><i data-lucide="wrench" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u1.h3">Mantenimiento predictivo</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u1.pain">Fallas inesperadas, detenciones y alto costo de reparación.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u1.value">Alertas tempranas, detección de anomalías y priorización de intervenciones.</span></div>
                 </div>
-                <div class="solution-card r-up" style="--d:80ms">
-                    <div class="solution-icon"><i data-lucide="bar-chart-2" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s2.h3">Analítica de datos</h3>
-                    <p data-i18n="s2.p">Transforma el flujo de datos de tus sensores en dashboards, reportes y alertas accionables para tu equipo.</p>
-                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                <div class="solution-card r-up" style="--d:60ms">
+                    <div class="solution-icon"><i data-lucide="map-pin" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u2.h3">Gestión de activos críticos</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u2.pain">Información dispersa y baja visibilidad de equipos distribuidos.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u2.value">Estado en tiempo real, historial, mapas, alarmas y trazabilidad.</span></div>
                 </div>
-                <div class="solution-card r-up" style="--d:160ms">
-                    <div class="solution-icon"><i data-lucide="bell" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s3.h3">Alertas inteligentes</h3>
-                    <p data-i18n="s3.p">Define umbrales y reglas de negocio para recibir notificaciones precisas cuando algo sale de los parámetros esperados.</p>
-                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                <div class="solution-card r-up" style="--d:120ms">
+                    <div class="solution-icon"><i data-lucide="zap" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u3.h3">Eficiencia energética</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u3.pain">Consumo elevado y poca capacidad de control y optimización.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u3.value">Medición, comparación, alertas por desviación y reportes de consumo.</span></div>
+                </div>
+                <div class="solution-card r-up" style="--d:180ms">
+                    <div class="solution-icon"><i data-lucide="droplets" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u4.h3">Agua y utilities</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u4.pain">Pérdidas, presión irregular y reportes manuales de cumplimiento.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u4.value">Monitoreo remoto, alertas, reportes automáticos y evidencia histórica.</span></div>
                 </div>
                 <div class="solution-card r-up" style="--d:240ms">
-                    <div class="solution-icon"><i data-lucide="git-merge" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s4.h3">Integraciones</h3>
-                    <p data-i18n="s4.p">Conecta ORION con tus sistemas ERP, CRM o CMMS mediante APIs REST y webhooks sin desarrollo a medida.</p>
-                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <div class="solution-icon"><i data-lucide="snowflake" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u5.h3">Cadena de frío</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u5.pain">Pérdida de productos y falta de trazabilidad ambiental.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u5.value">Temperatura, humedad, alarmas, historial y cumplimiento.</span></div>
                 </div>
-                <div class="solution-card r-up" style="--d:320ms">
+                <div class="solution-card r-up" style="--d:300ms">
                     <div class="solution-icon"><i data-lucide="shield-check" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s5.h3">Seguridad y cumplimiento</h3>
-                    <p data-i18n="s5.p">Comunicaciones cifradas, control de acceso granular y trazabilidad completa para cumplir con estándares industriales.</p>
-                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                    <h3 data-i18n="u6.h3">Seguridad y cumplimiento</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u6.pain">Procesos manuales, evidencia incompleta y riesgo operacional.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u6.value">Registro automático, alarmas, reportes y auditoría de eventos.</span></div>
                 </div>
-                <div class="solution-card r-up" style="--d:400ms">
-                    <div class="solution-icon"><i data-lucide="cloud" style="width:20px;height:20px;"></i></div>
-                    <h3 data-i18n="s6.h3">Edge &amp; Cloud</h3>
-                    <p data-i18n="s6.p">Procesa datos en el borde para latencia mínima y sincroniza con la nube para análisis histórico y machine learning.</p>
-                    <span class="solution-arrow" data-i18n="solutions.explore">Explorar <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                <div class="solution-card r-up" style="--d:360ms">
+                    <div class="solution-icon"><i data-lucide="building-2" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u7.h3">Operación multisitio</h3>
+                    <div class="uc-row uc-pain"><b data-i18n="uc.pain">Problema</b><span data-i18n="u7.pain">Datos fragmentados entre instalaciones y proveedores.</span></div>
+                    <div class="uc-row uc-value"><b data-i18n="uc.value">Con ORION</b><span data-i18n="u7.value">Tablero corporativo, comparabilidad y control centralizado.</span></div>
                 </div>
+                <a href="#contact" class="solution-card uc-cta r-up" style="--d:420ms">
+                    <div class="solution-icon"><i data-lucide="message-circle" style="width:20px;height:20px;"></i></div>
+                    <h3 data-i18n="u8.h3">¿Tienes otro caso?</h3>
+                    <p data-i18n="u8.p">La plataforma es abierta para adaptarse a nuevos activos y procesos. Cuéntanos tu desafío.</p>
+                    <span class="solution-arrow"><span data-i18n="u8.cta">Conversemos</span> <i data-lucide="arrow-right" style="width:12px;height:12px;"></i></span>
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- CÓMO FUNCIONA: entradas → plataforma → salidas -->
     <section class="process" id="process">
         <div class="container">
             <div class="section-header r-up">
                 <h2 data-i18n="process.h2">Cómo funciona</h2>
-                <p data-i18n="process.p">Despliegue IoT sin fricciones en cinco pasos, integrado con tus operaciones existentes.</p>
+                <p data-i18n="process.p">De cualquier fuente de datos a decisiones operacionales. Trabajamos primero con lo que ya tienes y sumamos hardware solo cuando falta el dato.</p>
             </div>
-            <div class="process-flow">
-                <div class="process-item r-left" style="--d:0ms">
-                    <div class="process-num">1</div>
-                    <div class="process-body">
-                        <h3 data-i18n="p1.h3">Conectamos tus dispositivos</h3>
-                        <p data-i18n="p1.p">Integramos tus sensores, gateways y activos existentes con la plataforma mediante protocolos estándar IoT.</p>
+            <div class="flow">
+                <div class="flow-col r-up" style="--d:0ms">
+                    <h4 data-i18n="in.h4">Entradas</h4>
+                    <div class="flow-sub" data-i18n="in.sub">Ecosistema abierto</div>
+                    <div class="flow-item"><i data-lucide="thermometer" style="width:18px;height:18px;"></i><div><strong data-i18n="in1.t">Hardware y sensores de terceros</strong><small data-i18n="in1.d">Sensores, PLC, gateways, medidores, cámaras</small></div></div>
+                    <div class="flow-item"><i data-lucide="server" style="width:18px;height:18px;"></i><div><strong data-i18n="in2.t">Sistemas operacionales</strong><small>SCADA, ERP, MES, CMMS, TMS</small></div></div>
+                    <div class="flow-item"><i data-lucide="globe" style="width:18px;height:18px;"></i><div><strong data-i18n="in3.t">Fuentes externas</strong><small data-i18n="in3.d">APIs, clima, tarifas, GIS</small></div></div>
+                    <div class="flow-item"><i data-lucide="clipboard-list" style="width:18px;height:18px;"></i><div><strong data-i18n="in4.t">Datos manuales</strong><small data-i18n="in4.d">Planillas, inspecciones, órdenes de trabajo</small></div></div>
+                </div>
+                <div class="flow-arrow"><i data-lucide="arrow-right" style="width:22px;height:22px;"></i></div>
+                <div class="flow-col flow-core r-up" style="--d:120ms">
+                    <div class="flow-core-brand"><img src="orion_iso2.png" alt=""><span>ORION</span></div>
+                    <div class="flow-sub" data-i18n="core.sub">Plataforma de inteligencia operacional</div>
+                    <div class="flow-note"><i data-lucide="server-cog" style="width:14px;height:14px;"></i><span data-i18n="core.note">Datos procesados por nuestros sistemas</span></div>
+                    <div class="flow-item"><i data-lucide="share-2" style="width:18px;height:18px;"></i><div><strong data-i18n="core1">Integrar y normalizar datos</strong></div></div>
+                    <div class="flow-item"><i data-lucide="monitor" style="width:18px;height:18px;"></i><div><strong data-i18n="core2">Monitorear y visualizar</strong></div></div>
+                    <div class="flow-item"><i data-lucide="bell-ring" style="width:18px;height:18px;"></i><div><strong data-i18n="core3">Alertar y automatizar</strong></div></div>
+                    <div class="flow-item"><i data-lucide="bar-chart-3" style="width:18px;height:18px;"></i><div><strong data-i18n="core4">Analizar y decidir</strong></div></div>
+                    <div class="flow-ai">
+                        <div class="flow-ai-head"><i data-lucide="sparkles" style="width:16px;height:16px;"></i><span data-i18n="ai.h">Enriquecido con IA</span></div>
+                        <p data-i18n="ai.p">Nuestra IA analiza los datos de tu operación, les agrega contexto y genera recomendaciones accionables.</p>
                     </div>
                 </div>
-                <div class="process-line"></div>
-                <div class="process-item r-left" style="--d:80ms">
-                    <div class="process-num">2</div>
-                    <div class="process-body">
-                        <h3 data-i18n="p2.h3">Procesamos los datos en tiempo real</h3>
-                        <p data-i18n="p2.p">El motor de procesamiento de ORION normaliza, filtra y enriquece cada evento al instante en que llega.</p>
-                    </div>
+                <div class="flow-arrow"><i data-lucide="arrow-right" style="width:22px;height:22px;"></i></div>
+                <div class="flow-col r-up" style="--d:240ms">
+                    <h4 data-i18n="out.h4">Salidas</h4>
+                    <div class="flow-sub" data-i18n="out.sub">Valor para la operación</div>
+                    <div class="flow-item"><i data-lucide="layout-dashboard" style="width:18px;height:18px;"></i><div><strong data-i18n="out1">Dashboards y mapas en tiempo real</strong></div></div>
+                    <div class="flow-item"><i data-lucide="siren" style="width:18px;height:18px;"></i><div><strong data-i18n="out2">Alertas y priorización</strong></div></div>
+                    <div class="flow-item"><i data-lucide="file-check-2" style="width:18px;height:18px;"></i><div><strong data-i18n="out3">Reportes y cumplimiento</strong></div></div>
+                    <div class="flow-item"><i data-lucide="workflow" style="width:18px;height:18px;"></i><div><strong data-i18n="out4">Integraciones y flujos de trabajo</strong></div></div>
+                    <div class="flow-item"><i data-lucide="brain" style="width:18px;height:18px;"></i><div><strong data-i18n="out5">Analítica predictiva</strong></div></div>
+                    <div class="flow-item ai-out"><i data-lucide="sparkles" style="width:18px;height:18px;"></i><div><strong data-i18n="out6">Recomendaciones de nuestra IA</strong></div></div>
                 </div>
-                <div class="process-line"></div>
-                <div class="process-item r-left" style="--d:160ms">
-                    <div class="process-num">3</div>
-                    <div class="process-body">
-                        <h3 data-i18n="p3.h3">Detectamos anomalías y patrones</h3>
-                        <p data-i18n="p3.p">Los modelos de IA aprenden el comportamiento de cada activo y detectan desviaciones antes de que generen problemas.</p>
-                    </div>
+            </div>
+            <p class="flow-tagline r-up" data-i18n-html="flow.tagline">ORION no vende un sensor: <span>convierte datos de activos en decisiones operacionales.</span></p>
+        </div>
+    </section>
+
+    <!-- MÓDULOS -->
+    <section class="modules" id="modules">
+        <div class="container">
+            <div class="section-header r-up">
+                <h2 data-i18n="mod.h2">Una plataforma modular</h2>
+                <p data-i18n="mod.p">Empieza con lo que necesitas y suma capacidades a medida que crece tu operación.</p>
+            </div>
+            <div class="modules-grid">
+                <div class="module r-up" style="--d:0ms">
+                    <div class="module-name"><i data-lucide="share-2" style="width:18px;height:18px;"></i><span>Orion <em>Integrate</em></span></div>
+                    <p data-i18n="m1.p">Integración de dispositivos, sistemas, APIs y fuentes de datos, con normalización y visualización básica.</p>
                 </div>
-                <div class="process-line"></div>
-                <div class="process-item r-left" style="--d:240ms">
-                    <div class="process-num">4</div>
-                    <div class="process-body">
-                        <h3 data-i18n="p4.h3">Generamos insights accionables</h3>
-                        <p data-i18n="p4.p">Alertas, reportes y recomendaciones llegan al equipo correcto en el momento correcto para tomar decisiones rápidas.</p>
-                    </div>
+                <div class="module r-up" style="--d:70ms">
+                    <div class="module-name"><i data-lucide="monitor" style="width:18px;height:18px;"></i><span>Orion <em>Monitor</em></span></div>
+                    <p data-i18n="m2.p">Dashboards, mapas, alertas, reportes, roles, reglas y seguimiento de activos.</p>
                 </div>
-                <div class="process-line"></div>
-                <div class="process-item r-left" style="--d:320ms">
-                    <div class="process-num">5</div>
-                    <div class="process-body">
-                        <h3 data-i18n="p5.h3">Optimizamos continuamente</h3>
-                        <p data-i18n="p5.p">Cada ciclo de datos retroalimenta los modelos para mejorar la precisión de las predicciones y el rendimiento operativo.</p>
-                    </div>
+                <div class="module r-up" style="--d:140ms">
+                    <div class="module-name"><i data-lucide="brain" style="width:18px;height:18px;"></i><span>Orion <em>Intelligence</em></span></div>
+                    <p data-i18n="m3.p">Modelos predictivos, detección de anomalías, variables virtuales, recomendaciones y priorización de riesgos.</p>
                 </div>
+                <div class="module r-up" style="--d:210ms">
+                    <div class="module-name"><i data-lucide="workflow" style="width:18px;height:18px;"></i><span>Orion <em>Automate</em></span></div>
+                    <p data-i18n="m4.p">Flujos de trabajo, tickets, notificaciones y órdenes de trabajo ejecutados en tus sistemas (ERP, CMMS, SCADA).</p>
+                </div>
+                <div class="module r-up" style="--d:280ms">
+                    <div class="module-name"><i data-lucide="building" style="width:18px;height:18px;"></i><span>Orion <em>Enterprise</em></span></div>
+                    <p data-i18n="m5.p">Multiempresa, white-label, APIs, seguridad avanzada, SSO, SLA, ambiente privado y soporte especializado.</p>
+                </div>
+                <div class="module optional r-up" style="--d:350ms">
+                    <div class="module-name"><i data-lucide="cpu" style="width:18px;height:18px;"></i><span data-i18n="m6.name">Hardware opcional</span></div>
+                    <p data-i18n="m6.p">Sensores, gateways o conectividad solo cuando tu operación no cuenta con los datos necesarios.</p>
+                    <span class="module-tag" data-i18n="m6.tag">Solo si se necesita</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PILOTO -->
+    <section class="pilot" id="pilot">
+        <div class="container">
+            <div class="pilot-card r-scale">
+                <div>
+                    <span class="pilot-eyebrow" data-i18n="pilot.eyebrow">Piloto de 60 a 90 días</span>
+                    <h2 data-i18n="pilot.h2">Empieza con un caso de uso y escala con resultados</h2>
+                    <p data-i18n="pilot.p">Validamos el valor en tu operación con indicadores definidos desde el inicio, antes de escalar a más activos, sitios o módulos.</p>
+                    <ol class="pilot-steps">
+                        <li data-i18n="ps1">Identificamos un activo o proceso crítico</li>
+                        <li data-i18n="ps2">Integramos primero tus fuentes de datos existentes</li>
+                        <li data-i18n="ps3">Medimos resultados y escalamos por activos, sitios o módulos</li>
+                    </ol>
+                    <a href="#contact" class="btn-light"><span data-i18n="pilot.cta">Conversemos tu piloto</span><i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                </div>
+                <div class="pilot-kpis">
+                    <h3 data-i18n="pilot.kpis">Qué medimos</h3>
+                    <ul>
+                        <li><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i><span data-i18n="kpi1">Activos con datos conectados y confiables</span></li>
+                        <li><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i><span data-i18n="kpi2">Tiempo de detección de fallas o desviaciones</span></li>
+                        <li><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i><span data-i18n="kpi3">Reducción de visitas a terreno y eventos no planificados</span></li>
+                        <li><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i><span data-i18n="kpi4">Ahorro o pérdida evitada estimada</span></li>
+                        <li><i data-lucide="check-circle-2" style="width:16px;height:16px;"></i><span data-i18n="kpi5">Tiempo ahorrado en elaboración de reportes</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESCARGAS -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <div class="section-header r-up">
+                <h2 data-i18n="res.h2">Descargas</h2>
+            </div>
+            <div class="resource-card r-up">
+                <div class="resource-icon"><i data-lucide="truck" style="width:26px;height:26px;"></i></div>
+                <div class="resource-body">
+                    <h3 data-i18n="res1.h3">Brochure de gestión de flota</h3>
+                    <p data-i18n="res1.p">Telemetría, viajes, seguridad y mantenimiento en una plataforma para concreteras, minería, transporte, distribución, maquinaria y electromovilidad.</p>
+                    <span class="resource-meta" data-i18n="res1.meta">PDF · 6 páginas · 8 MB · Español</span>
+                </div>
+                <a href="docs/orion-brochure-gestion-de-flota.pdf" class="btn-light" download="ORION-IoT-Brochure-Gestion-de-Flota.pdf">
+                    <i data-lucide="download" style="width:16px;height:16px;"></i>
+                    <span data-i18n="res.dl">Descargar</span>
+                </a>
             </div>
         </div>
     </section>
@@ -339,7 +544,8 @@
             <div class="about-card r-scale">
                 <img src="orion_6.jpg" alt="ORION" class="about-logo">
                 <h2 data-i18n="about.h2">El enfoque ORION</h2>
-                <p data-i18n="about.p">Creemos que el valor del IoT no está en los datos sino en lo que haces con ellos. Por eso construimos una plataforma que va más allá de la conectividad: convierte cada señal de tus activos en inteligencia operativa, adaptada a tu industria y a tu estrategia.</p>
+                <p data-i18n="about.p">Abiertos en la forma de conectar datos, específicos en el problema que resolvemos. No necesitas reemplazar tu infraestructura: ORION aprovecha los datos que ya existen y los convierte en una capa de inteligencia para tu operación.</p>
+                <p data-i18n="about.p2">Menos operación reactiva, más visibilidad, alertas accionables y control sobre tus activos críticos.</p>
             </div>
         </div>
     </section>
@@ -349,7 +555,7 @@
             <div class="contact-wrap">
                 <div class="contact-info r-left">
                     <h2 data-i18n="contact.h2">Conectemos</h2>
-                    <p data-i18n="contact.p">Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación con IoT.</p>
+                    <p data-i18n="contact.p">Cuéntanos qué activo o proceso quieres controlar mejor y te mostramos cómo ORION puede ayudarte, partiendo por los datos que ya tienes.</p>
                     <div class="contact-item">
                         <i data-lucide="map-pin" style="width:18px;height:18px;"></i>
                         <div><strong data-i18n="contact.hq">Sede central</strong><span>Los Militares 5620, Oficina 905<br>Las Condes, Región Metropolitana, Chile</span></div>
@@ -367,24 +573,26 @@
                     <form id="contactForm">
                         <div class="field">
                             <label for="fname" data-i18n="form.name">Nombre</label>
-                            <input type="text" id="fname" data-i18n-placeholder="form.name.ph" placeholder="Tu nombre completo" required>
+                            <input type="text" id="fname" name="name" data-i18n-placeholder="form.name.ph" placeholder="Tu nombre completo" required>
                         </div>
                         <div class="field">
                             <label for="femail" data-i18n="form.email">Correo electrónico</label>
-                            <input type="email" id="femail" data-i18n-placeholder="form.email.ph" placeholder="tu@empresa.com" required>
+                            <input type="email" id="femail" name="email" data-i18n-placeholder="form.email.ph" placeholder="tu@empresa.com" required>
                         </div>
                         <div class="field">
                             <label for="fcompany" data-i18n="form.company">Empresa</label>
-                            <input type="text" id="fcompany" data-i18n-placeholder="form.company.ph" placeholder="Nombre de empresa">
+                            <input type="text" id="fcompany" name="company" data-i18n-placeholder="form.company.ph" placeholder="Nombre de empresa">
                         </div>
                         <div class="field">
                             <label for="fmessage" data-i18n="form.message">Mensaje</label>
-                            <textarea id="fmessage" data-i18n-placeholder="form.message.ph" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                            <textarea id="fmessage" name="message" data-i18n-placeholder="form.message.ph" placeholder="¿Qué activo o proceso quieres controlar mejor?" required></textarea>
                         </div>
-                        <button type="submit" class="btn-light">
+                        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <button type="submit" class="btn-light" id="formSubmit">
                             <span data-i18n="form.submit">Enviar mensaje</span>
                             <i data-lucide="send" style="width:16px;height:16px;"></i>
                         </button>
+                        <p class="form-status" id="formStatus" role="status"></p>
                     </form>
                 </div>
             </div>
@@ -410,101 +618,175 @@
         // ===== I18N =====
         const T = {
             es: {
-                'nav.services':   'Plataforma',
-                'nav.solutions':  'Soluciones',
-                'nav.process':    'Cómo funciona',
-                'nav.contact':    'Contacto',
-                'nav.cta':        'Solicitar demo',
-                'hero.eyebrow':   'Plataforma IoT de próxima generación',
-                'hero.h1':        'Conecta tu mundo con <span>ORION</span>',
-                'hero.desc':      'Plataforma IoT para conectar, monitorear y optimizar tus activos en tiempo real. Transforma datos en decisiones inteligentes.',
-                'hero.cta':       'Solicitar demo',
-                'hero.how':       'Cómo funciona',
-                'features.h2':    'El valor de conectar tus activos',
-                'features.p':     'Conectamos dispositivos, sensores y sistemas para que tus operaciones estén siempre informadas y en control.',
-                'f1.h3': 'Conectividad total',        'f1.p': 'Integra cualquier dispositivo o sensor con protocolos estándar — MQTT, HTTP, Modbus — sin cambiar tu infraestructura.',
-                'f2.h3': 'Visibilidad en tiempo real','f2.p': 'Monitorea el estado de todos tus activos desde un único dashboard, con alertas instantáneas ante cualquier anomalía.',
-                'f3.h3': 'Inteligencia predictiva',   'f3.p': 'Modelos de IA entrenados por activo detectan patrones de falla antes de que ocurran y reducen el costo operativo.',
-                'f4.h3': 'Escala sin límites',         'f4.p': 'Desde 10 hasta 100.000 dispositivos conectados — la plataforma crece con tu operación sin fricción ni rediseño.',
-                'solutions.h2':      'Soluciones IoT para cada industria',
-                'solutions.p':       'ORION conecta activos físicos con inteligencia digital — desde logística y manufactura hasta infraestructura y energía.',
-                'solutions.explore': 'Explorar',
-                's1.h3': 'Gestión de dispositivos',   's1.p': 'Registra, configura y actualiza remotamente todos tus dispositivos IoT desde una consola centralizada y segura.',
-                's2.h3': 'Analítica de datos',         's2.p': 'Transforma el flujo de datos de tus sensores en dashboards, reportes y alertas accionables para tu equipo.',
-                's3.h3': 'Alertas inteligentes',       's3.p': 'Define umbrales y reglas de negocio para recibir notificaciones precisas cuando algo sale de los parámetros esperados.',
-                's4.h3': 'Integraciones',               's4.p': 'Conecta ORION con tus sistemas ERP, CRM o CMMS mediante APIs REST y webhooks sin desarrollo a medida.',
-                's5.h3': 'Seguridad y cumplimiento',   's5.p': 'Comunicaciones cifradas, control de acceso granular y trazabilidad completa para cumplir con estándares industriales.',
-                's6.h3': 'Edge & Cloud',                's6.p': 'Procesa datos en el borde para latencia mínima y sincroniza con la nube para análisis histórico y machine learning.',
+                'nav.platform':  'Plataforma',
+                'nav.usecases':  'Casos de uso',
+                'nav.process':   'Cómo funciona',
+                'nav.modules':   'Módulos',
+                'nav.contact':   'Contacto',
+                'nav.cta':       'Solicitar demo',
+                'hero.eyebrow':  'Plataforma Industrial IoT · Agnóstica al hardware',
+                'hero.h1':       'Convierte datos dispersos en <span>control operacional</span>',
+                'hero.desc':     'ORION conecta los activos, sistemas y fuentes de datos que ya tienes para entregarte visibilidad en tiempo real, alertas inteligentes y mejores decisiones, sin quedar amarrado a un hardware o proveedor único.',
+                'hero.cta':      'Solicitar demo',
+                'hero.how':      'Cómo funciona',
+                'platform.h2':   'Una capa de inteligencia sobre toda tu operación',
+                'platform.p':    'Tus datos vienen de sensores, equipos, PLC, SCADA, ERP, APIs y planillas de distintas marcas. ORION los une en una sola plataforma.',
+                'k1.h3': 'Agnóstica al hardware',     'k1.p': 'Integra los dispositivos y fuentes que ya tienes, sin quedar cautivo de una marca o tecnología.',
+                'k2.h3': 'Multisectorial',            'k2.p': 'Industria, energía, agua, minería, logística, agricultura, retail, edificios e infraestructura.',
+                'k3.h3': 'Orientada a la operación',  'k3.p': 'No solo visualiza: ayuda a detectar, priorizar, automatizar y ejecutar acciones.',
+                'k4.h3': 'Escalable',                 'k4.p': 'Parte con un caso de uso y suma activos, sitios, sensores, usuarios e integraciones.',
+                'k5.h3': 'Abierta',                   'k5.p': 'APIs y conectores para integrarse con tus plataformas empresariales.',
+                'uc.h2':    'Casos de uso que generan valor',
+                'uc.p':     'Partimos por el problema operacional, no por el dispositivo.',
+                'uc.pain':  'Problema',
+                'uc.value': 'Con ORION',
+                'u1.h3': 'Mantenimiento predictivo',    'u1.pain': 'Fallas inesperadas, detenciones y alto costo de reparación.',            'u1.value': 'Alertas tempranas, detección de anomalías y priorización de intervenciones.',
+                'u2.h3': 'Gestión de activos críticos', 'u2.pain': 'Información dispersa y baja visibilidad de equipos distribuidos.',      'u2.value': 'Estado en tiempo real, historial, mapas, alarmas y trazabilidad.',
+                'u3.h3': 'Eficiencia energética',       'u3.pain': 'Consumo elevado y poca capacidad de control y optimización.',          'u3.value': 'Medición, comparación, alertas por desviación y reportes de consumo.',
+                'u4.h3': 'Agua y utilities',            'u4.pain': 'Pérdidas, presión irregular y reportes manuales de cumplimiento.',     'u4.value': 'Monitoreo remoto, alertas, reportes automáticos y evidencia histórica.',
+                'u5.h3': 'Cadena de frío',              'u5.pain': 'Pérdida de productos y falta de trazabilidad ambiental.',              'u5.value': 'Temperatura, humedad, alarmas, historial y cumplimiento.',
+                'u6.h3': 'Seguridad y cumplimiento',    'u6.pain': 'Procesos manuales, evidencia incompleta y riesgo operacional.',        'u6.value': 'Registro automático, alarmas, reportes y auditoría de eventos.',
+                'u7.h3': 'Operación multisitio',        'u7.pain': 'Datos fragmentados entre instalaciones y proveedores.',                'u7.value': 'Tablero corporativo, comparabilidad y control centralizado.',
+                'u8.h3': '¿Tienes otro caso?',          'u8.p': 'La plataforma es abierta para adaptarse a nuevos activos y procesos. Cuéntanos tu desafío.', 'u8.cta': 'Conversemos',
                 'process.h2': 'Cómo funciona',
-                'process.p':  'Despliegue IoT sin fricciones en cinco pasos, integrado con tus operaciones existentes.',
-                'p1.h3': 'Conectamos tus dispositivos',          'p1.p': 'Integramos tus sensores, gateways y activos existentes con la plataforma mediante protocolos estándar IoT.',
-                'p2.h3': 'Procesamos los datos en tiempo real',  'p2.p': 'El motor de procesamiento de ORION normaliza, filtra y enriquece cada evento al instante en que llega.',
-                'p3.h3': 'Detectamos anomalías y patrones',      'p3.p': 'Los modelos de IA aprenden el comportamiento de cada activo y detectan desviaciones antes de que generen problemas.',
-                'p4.h3': 'Generamos insights accionables',       'p4.p': 'Alertas, reportes y recomendaciones llegan al equipo correcto en el momento correcto para tomar decisiones rápidas.',
-                'p5.h3': 'Optimizamos continuamente',            'p5.p': 'Cada ciclo de datos retroalimenta los modelos para mejorar la precisión de las predicciones y el rendimiento operativo.',
+                'process.p':  'De cualquier fuente de datos a decisiones operacionales. Trabajamos primero con lo que ya tienes y sumamos hardware solo cuando falta el dato.',
+                'in.h4': 'Entradas', 'in.sub': 'Ecosistema abierto',
+                'in1.t': 'Hardware y sensores de terceros', 'in1.d': 'Sensores, PLC, gateways, medidores, cámaras',
+                'in2.t': 'Sistemas operacionales',
+                'in3.t': 'Fuentes externas',                'in3.d': 'APIs, clima, tarifas, GIS',
+                'in4.t': 'Datos manuales',                  'in4.d': 'Planillas, inspecciones, órdenes de trabajo',
+                'core.sub': 'Plataforma de inteligencia operacional',
+                'core1': 'Integrar y normalizar datos', 'core2': 'Monitorear y visualizar', 'core3': 'Alertar y automatizar', 'core4': 'Analizar y decidir',
+                'out.h4': 'Salidas', 'out.sub': 'Valor para la operación',
+                'out1': 'Dashboards y mapas en tiempo real', 'out2': 'Alertas y priorización', 'out3': 'Reportes y cumplimiento', 'out4': 'Integraciones y flujos de trabajo', 'out5': 'Analítica predictiva', 'out6': 'Recomendaciones de nuestra IA',
+                'core.note': 'Datos procesados por nuestros sistemas', 'ai.h': 'Enriquecido con IA', 'ai.p': 'Nuestra IA analiza los datos de tu operación, les agrega contexto y genera recomendaciones accionables.',
+                'flow.tagline': 'ORION no vende un sensor: <span>convierte datos de activos en decisiones operacionales.</span>',
+                'mod.h2': 'Una plataforma modular',
+                'mod.p':  'Empieza con lo que necesitas y suma capacidades a medida que crece tu operación.',
+                'm1.p': 'Integración de dispositivos, sistemas, APIs y fuentes de datos, con normalización y visualización básica.',
+                'm2.p': 'Dashboards, mapas, alertas, reportes, roles, reglas y seguimiento de activos.',
+                'm3.p': 'Modelos predictivos, detección de anomalías, variables virtuales, recomendaciones y priorización de riesgos.',
+                'm4.p': 'Flujos de trabajo, tickets, notificaciones y órdenes de trabajo ejecutados en tus sistemas (ERP, CMMS, SCADA).',
+                'm5.p': 'Multiempresa, white-label, APIs, seguridad avanzada, SSO, SLA, ambiente privado y soporte especializado.',
+                'm6.name': 'Hardware opcional', 'm6.p': 'Sensores, gateways o conectividad solo cuando tu operación no cuenta con los datos necesarios.', 'm6.tag': 'Solo si se necesita',
+                'pilot.eyebrow': 'Piloto de 60 a 90 días',
+                'pilot.h2': 'Empieza con un caso de uso y escala con resultados',
+                'pilot.p':  'Validamos el valor en tu operación con indicadores definidos desde el inicio, antes de escalar a más activos, sitios o módulos.',
+                'ps1': 'Identificamos un activo o proceso crítico',
+                'ps2': 'Integramos primero tus fuentes de datos existentes',
+                'ps3': 'Medimos resultados y escalamos por activos, sitios o módulos',
+                'pilot.cta':  'Conversemos tu piloto',
+                'pilot.kpis': 'Qué medimos',
+                'kpi1': 'Activos con datos conectados y confiables',
+                'kpi2': 'Tiempo de detección de fallas o desviaciones',
+                'kpi3': 'Reducción de visitas a terreno y eventos no planificados',
+                'kpi4': 'Ahorro o pérdida evitada estimada',
+                'kpi5': 'Tiempo ahorrado en elaboración de reportes',
+                'res.h2': 'Descargas', 'res.dl': 'Descargar',
+                'res1.h3': 'Brochure de gestión de flota', 'res1.p': 'Telemetría, viajes, seguridad y mantenimiento en una plataforma para concreteras, minería, transporte, distribución, maquinaria y electromovilidad.', 'res1.meta': 'PDF · 6 páginas · 8 MB · Español',
                 'about.h2': 'El enfoque ORION',
-                'about.p':  'Creemos que el valor del IoT no está en los datos sino en lo que haces con ellos. Por eso construimos una plataforma que va más allá de la conectividad: convierte cada señal de tus activos en inteligencia operativa, adaptada a tu industria y a tu estrategia.',
+                'about.p':  'Abiertos en la forma de conectar datos, específicos en el problema que resolvemos. No necesitas reemplazar tu infraestructura: ORION aprovecha los datos que ya existen y los convierte en una capa de inteligencia para tu operación.',
+                'about.p2': 'Menos operación reactiva, más visibilidad, alertas accionables y control sobre tus activos críticos.',
                 'contact.h2':    'Conectemos',
-                'contact.p':     'Estamos disponibles para responder tus preguntas y mostrarte cómo ORION puede transformar tu operación con IoT.',
+                'contact.p':     'Cuéntanos qué activo o proceso quieres controlar mejor y te mostramos cómo ORION puede ayudarte, partiendo por los datos que ya tienes.',
                 'contact.hq':    'Sede central',
                 'contact.email': 'Correo',
                 'contact.phone': 'Teléfono',
                 'form.name':       'Nombre',             'form.name.ph':    'Tu nombre completo',
                 'form.email':      'Correo electrónico', 'form.email.ph':   'tu@empresa.com',
                 'form.company':    'Empresa',             'form.company.ph': 'Nombre de empresa',
-                'form.message':    'Mensaje',             'form.message.ph': '¿En qué podemos ayudarte?',
+                'form.message':    'Mensaje',             'form.message.ph': '¿Qué activo o proceso quieres controlar mejor?',
                 'form.submit':     'Enviar mensaje',
-                'form.alert':      '¡Gracias por escribirnos! Nos pondremos en contacto pronto.',
+                'form.sending':    'Enviando…',
+                'form.ok':         '¡Gracias por escribirnos! Te responderemos pronto.',
+                'form.err':        'No pudimos enviar tu mensaje. Escríbenos directamente a contacto@orion-iot.com.',
                 'footer.copy':    '© 2026 ORION Technologies. Todos los derechos reservados.',
                 'footer.privacy': 'Privacidad',
                 'footer.terms':   'Términos',
             },
             en: {
-                'nav.services':   'Platform',
-                'nav.solutions':  'Solutions',
-                'nav.process':    'How it works',
-                'nav.contact':    'Contact',
-                'nav.cta':        'Request demo',
-                'hero.eyebrow':   'Next-generation IoT platform',
-                'hero.h1':        'Connect your world with <span>ORION</span>',
-                'hero.desc':      'IoT platform to connect, monitor, and optimize your assets in real time. Turn data into intelligent decisions.',
-                'hero.cta':       'Request demo',
-                'hero.how':       'How it works',
-                'features.h2':    'The value of connecting your assets',
-                'features.p':     'We connect devices, sensors, and systems so your operations are always informed and in control.',
-                'f1.h3': 'Total connectivity',        'f1.p': 'Integrate any device or sensor using standard protocols — MQTT, HTTP, Modbus — without changing your infrastructure.',
-                'f2.h3': 'Real-time visibility',      'f2.p': 'Monitor the status of all your assets from a single dashboard, with instant alerts for any anomaly.',
-                'f3.h3': 'Predictive intelligence',   'f3.p': 'AI models trained per asset detect failure patterns before they occur and reduce operational costs.',
-                'f4.h3': 'Limitless scale',            'f4.p': 'From 10 to 100,000 connected devices — the platform grows with your operation without friction or redesign.',
-                'solutions.h2':      'IoT solutions for every industry',
-                'solutions.p':       'ORION connects physical assets with digital intelligence — from logistics and manufacturing to infrastructure and energy.',
-                'solutions.explore': 'Explore',
-                's1.h3': 'Device management',         's1.p': 'Register, configure, and remotely update all your IoT devices from a centralized, secure console.',
-                's2.h3': 'Data analytics',             's2.p': 'Turn your sensor data stream into dashboards, reports, and actionable alerts for your team.',
-                's3.h3': 'Smart alerts',               's3.p': 'Define thresholds and business rules to receive precise notifications when something goes outside expected parameters.',
-                's4.h3': 'Integrations',               's4.p': 'Connect ORION with your ERP, CRM, or CMMS via REST APIs and webhooks — no custom development needed.',
-                's5.h3': 'Security & compliance',      's5.p': 'Encrypted communications, granular access control, and full traceability to meet industrial standards.',
-                's6.h3': 'Edge & Cloud',                's6.p': 'Process data at the edge for minimum latency and sync to the cloud for historical analysis and machine learning.',
+                'nav.platform':  'Platform',
+                'nav.usecases':  'Use cases',
+                'nav.process':   'How it works',
+                'nav.modules':   'Modules',
+                'nav.contact':   'Contact',
+                'nav.cta':       'Request demo',
+                'hero.eyebrow':  'Industrial IoT platform · Hardware-agnostic',
+                'hero.h1':       'Turn scattered data into <span>operational control</span>',
+                'hero.desc':     'ORION integrates the assets, systems and data sources you already have to give you real-time visibility, smart alerts and better decisions, without being locked into a single hardware vendor or provider.',
+                'hero.cta':      'Request demo',
+                'hero.how':      'How it works',
+                'platform.h2':   'An intelligence layer across your entire operation',
+                'platform.p':    'Your data comes from sensors, equipment, PLCs, SCADA, ERP, APIs and spreadsheets from different brands. ORION brings it together in a single platform.',
+                'k1.h3': 'Hardware-agnostic',       'k1.p': 'Integrate the devices and sources you already have, without being locked into a brand or technology.',
+                'k2.h3': 'Multi-industry',          'k2.p': 'Industry, energy, water, mining, logistics, agriculture, retail, buildings and infrastructure.',
+                'k3.h3': 'Operations-driven',       'k3.p': 'Beyond visualization: it helps you detect, prioritize, automate and act.',
+                'k4.h3': 'Scalable',                'k4.p': 'Start with one use case and add assets, sites, sensors, users and integrations.',
+                'k5.h3': 'Open',                    'k5.p': 'Open APIs and integrations with your enterprise platforms.',
+                'uc.h2':    'Use cases that create value',
+                'uc.p':     'We start from the operational problem, not the device.',
+                'uc.pain':  'Challenge',
+                'uc.value': 'With ORION',
+                'u1.h3': 'Predictive maintenance',    'u1.pain': 'Unexpected failures, downtime and high repair costs.',                  'u1.value': 'Early alerts, anomaly detection and prioritized interventions.',
+                'u2.h3': 'Critical asset management', 'u2.pain': 'Scattered information and low visibility of distributed equipment.',    'u2.value': 'Real-time status, history, maps, alarms and traceability.',
+                'u3.h3': 'Energy efficiency',         'u3.pain': 'High consumption and limited ability to control and optimize it.',      'u3.value': 'Metering, benchmarking, deviation alerts and consumption reports.',
+                'u4.h3': 'Water & utilities',         'u4.pain': 'Losses, irregular pressure and manual compliance reporting.',           'u4.value': 'Remote monitoring, alerts, automated reports and historical evidence.',
+                'u5.h3': 'Cold chain',                'u5.pain': 'Product loss and lack of environmental traceability.',                 'u5.value': 'Temperature, humidity, alarms, history and compliance.',
+                'u6.h3': 'Safety & compliance',       'u6.pain': 'Manual processes, incomplete evidence and operational risk.',          'u6.value': 'Automatic logging, alarms, reports and event auditing.',
+                'u7.h3': 'Multi-site operations',     'u7.pain': 'Data fragmented across facilities and providers.',                     'u7.value': 'Corporate dashboard, benchmarking and centralized control.',
+                'u8.h3': 'Have another use case?',    'u8.p': 'The platform is open to adapt to new assets and processes. Tell us about your challenge.', 'u8.cta': "Let's talk",
                 'process.h2': 'How it works',
-                'process.p':  'Frictionless IoT deployment in five steps, integrated with your existing operations.',
-                'p1.h3': 'Connect your devices',              'p1.p': 'We integrate your existing sensors, gateways, and assets with the platform using standard IoT protocols.',
-                'p2.h3': 'Process data in real time',         'p2.p': 'ORION\'s processing engine normalizes, filters, and enriches every event the instant it arrives.',
-                'p3.h3': 'Detect anomalies and patterns',     'p3.p': 'AI models learn each asset\'s behavior and detect deviations before they cause problems.',
-                'p4.h3': 'Generate actionable insights',      'p4.p': 'Alerts, reports, and recommendations reach the right team at the right time for fast decision-making.',
-                'p5.h3': 'Continuously optimize',             'p5.p': 'Each data cycle feeds back into the models to improve prediction accuracy and operational performance.',
+                'process.p':  'From any data source to operational decisions. We start with what you already have and add hardware only when data is missing.',
+                'in.h4': 'Inputs', 'in.sub': 'Open ecosystem',
+                'in1.t': 'Third-party hardware & sensors', 'in1.d': 'Sensors, PLCs, gateways, meters, cameras',
+                'in2.t': 'Operational systems',
+                'in3.t': 'External sources',               'in3.d': 'APIs, weather, tariffs, GIS',
+                'in4.t': 'Manual data',                    'in4.d': 'Spreadsheets, inspections, work orders',
+                'core.sub': 'Operational intelligence platform',
+                'core1': 'Integrate & normalize data', 'core2': 'Monitor & visualize', 'core3': 'Alert & automate', 'core4': 'Analyze & decide',
+                'out.h4': 'Outputs', 'out.sub': 'Value for your operation',
+                'out1': 'Real-time dashboards & maps', 'out2': 'Alerts & prioritization', 'out3': 'Reporting & compliance', 'out4': 'Integrations & workflows', 'out5': 'Predictive analytics', 'out6': 'Recommendations from our AI',
+                'core.note': 'Data processed by our systems', 'ai.h': 'AI-enriched', 'ai.p': 'Our AI analyzes your operational data, adds context and generates actionable recommendations.',
+                'flow.tagline': 'ORION doesn\'t sell a sensor: <span>it turns asset data into operational decisions.</span>',
+                'mod.h2': 'A modular platform',
+                'mod.p':  'Start with what you need and add capabilities as your operation grows.',
+                'm1.p': 'Integration of devices, systems, APIs and data sources, with normalization and basic visualization.',
+                'm2.p': 'Dashboards, maps, alerts, reports, roles, rules and asset tracking.',
+                'm3.p': 'Predictive models, anomaly detection, virtual variables, recommendations and risk prioritization.',
+                'm4.p': 'Workflows, tickets, notifications and work orders executed in your systems (ERP, CMMS, SCADA).',
+                'm5.p': 'Multi-tenant, white-label, APIs, advanced security, SSO, SLA, private environment and specialized support.',
+                'm6.name': 'Optional hardware', 'm6.p': 'Sensors, gateways or communications only when your operation lacks the data it needs.', 'm6.tag': 'Only if needed',
+                'pilot.eyebrow': '60 to 90-day pilot',
+                'pilot.h2': 'Start with one use case and scale with results',
+                'pilot.p':  'We validate the value in your operation with indicators defined from day one, before scaling to more assets, sites or modules.',
+                'ps1': 'We identify a critical asset or process',
+                'ps2': 'We integrate your existing data sources first',
+                'ps3': 'We measure results and scale by assets, sites or modules',
+                'pilot.cta':  "Let's plan your pilot",
+                'pilot.kpis': 'What we measure',
+                'kpi1': 'Assets with integrated, reliable data',
+                'kpi2': 'Time to detect failures or deviations',
+                'kpi3': 'Fewer site visits and unplanned events',
+                'kpi4': 'Estimated savings or avoided losses',
+                'kpi5': 'Time saved on reporting',
+                'res.h2': 'Downloads', 'res.dl': 'Download',
+                'res1.h3': 'Fleet management brochure', 'res1.p': 'Telematics, trips, safety and maintenance in one platform for concrete mixers, mining, freight, distribution, machinery and e-mobility.', 'res1.meta': 'PDF · 6 pages · 8 MB · Spanish',
                 'about.h2': 'The ORION approach',
-                'about.p':  'We believe the value of IoT lies not in the data itself but in what you do with it. That\'s why we built a platform that goes beyond connectivity — turning every signal from your assets into operational intelligence, tailored to your industry and strategy.',
-                'contact.h2':    "Let's connect",
-                'contact.p':     "We're available to answer your questions and show you how ORION can transform your operation with IoT.",
+                'about.p':  'Open in how we integrate data, specific in the problem we solve. You don\'t need to replace your infrastructure: ORION leverages the data you already have and turns it into an intelligence layer for your operation.',
+                'about.p2': 'Less reactive operation, more visibility, actionable alerts and control over your critical assets.',
+                'contact.h2':    'Get in touch',
+                'contact.p':     'Tell us which asset or process you want to control better and we\'ll show you how ORION can help, starting with the data you already have.',
                 'contact.hq':    'Headquarters',
                 'contact.email': 'Email',
                 'contact.phone': 'Phone',
                 'form.name':       'Name',     'form.name.ph':    'Your full name',
                 'form.email':      'Email',    'form.email.ph':   'you@company.com',
                 'form.company':    'Company',  'form.company.ph': 'Company name',
-                'form.message':    'Message',  'form.message.ph': 'How can we help?',
+                'form.message':    'Message',  'form.message.ph': 'Which asset or process do you want to control better?',
                 'form.submit':     'Send message',
-                'form.alert':      'Thanks for reaching out! We will get back to you soon.',
+                'form.sending':    'Sending…',
+                'form.ok':         'Thanks for reaching out! We will get back to you soon.',
+                'form.err':        'We couldn\'t send your message. Please email us directly at contacto@orion-iot.com.',
                 'footer.copy':    '© 2026 ORION Technologies. All rights reserved.',
                 'footer.privacy': 'Privacy',
                 'footer.terms':   'Terms',
@@ -541,10 +823,47 @@
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
-        // Form
-        document.getElementById('contactForm').addEventListener('submit', e => {
+        // ===== FORMULARIO: envía a jcampos@orion-iot.com vía FormSubmit =====
+        const FORM_ENDPOINT = 'https://formsubmit.co/ajax/jcampos@orion-iot.com';
+        const form = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const formBtn = document.getElementById('formSubmit');
+        form.addEventListener('submit', async e => {
             e.preventDefault();
-            alert(T[currentLang]['form.alert']);
+            const t = T[currentLang];
+            const fd = new FormData(form);
+            if (fd.get('_honey')) return; // bot
+            formBtn.disabled = true;
+            formBtn.querySelector('span').textContent = t['form.sending'];
+            formStatus.className = 'form-status';
+            try {
+                const res = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        name: fd.get('name'),
+                        email: fd.get('email'),
+                        company: fd.get('company') || '-',
+                        message: fd.get('message'),
+                        language: currentLang.toUpperCase(),
+                        _subject: 'Nuevo contacto desde orion-iot.com: ' + fd.get('name'),
+                        _template: 'table',
+                        _captcha: 'false'
+                    })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok || String(data.success) === 'false') throw new Error(data.message || res.status);
+                formStatus.textContent = t['form.ok'];
+                formStatus.className = 'form-status ok';
+                form.reset();
+            } catch (err) {
+                console.error('Form error:', err);
+                formStatus.textContent = t['form.err'];
+                formStatus.className = 'form-status err';
+            } finally {
+                formBtn.disabled = false;
+                formBtn.querySelector('span').textContent = t['form.submit'];
+            }
         });
 
         // Scroll reveal — double rAF ensures elements are painted hidden before observer fires
@@ -561,75 +880,89 @@
             revealEls.forEach(el => revealObs.observe(el));
         }));
 
-        // ===== HERO CANVAS =====
+        // ===== HERO CANVAS: activos de distintas industrias enviando datos a ORION =====
         (function() {
             const canvas = document.getElementById('heroCanvas');
             const ctx = canvas.getContext('2d');
-            function resize() { canvas.width = canvas.offsetWidth * devicePixelRatio; canvas.height = canvas.offsetHeight * devicePixelRatio; ctx.scale(devicePixelRatio, devicePixelRatio); }
-            window.addEventListener('resize', () => { resize(); buildHighways(); });
-            resize();
             const W = () => canvas.offsetWidth, H = () => canvas.offsetHeight;
-            let highways = [];
-            function buildHighways() {
-                highways = [
-                    { yf:0.22, laneH:28, dir:1,  speed:1.8 },
-                    { yf:0.38, laneH:34, dir:-1, speed:2.2 },
-                    { yf:0.55, laneH:34, dir:1,  speed:1.6 },
-                    { yf:0.70, laneH:28, dir:-1, speed:2.5 },
-                    { yf:0.84, laneH:22, dir:1,  speed:1.4 },
-                ];
+            function resize() {
+                canvas.width = W() * devicePixelRatio; canvas.height = H() * devicePixelRatio;
+                ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
             }
-            buildHighways();
+            const LABELS = {
+                es: ['Bomba 03 · 4,2 bar','Cámara frío · −18,4 °C','Medidor · 312 kWh','Estanque · 78%','Camión 12 · 87 km/h','Generador · OK','Vibración · normal','Caudal · 41 L/s','Compresor · 92%','Humedad · 64%','Tablero · 380 V','Inspección · OK','Alerta · priorizada','Gateway · online'],
+                en: ['Pump 03 · 4.2 bar','Cold room · −18.4 °C','Meter · 312 kWh','Tank · 78%','Truck 12 · 87 km/h','Generator · OK','Vibration · normal','Flow · 41 L/s','Compressor · 92%','Humidity · 64%','Panel · 380 V','Inspection · OK','Alert · prioritized','Gateway · online']
+            };
             const COLORS = ['#5fb8e6','#4a9fd4','#7ecef0','#3a8fc4'];
-            function makeTruck(hw) {
-                const w=W(), going=hw.dir===1, tw=52+Math.random()*28, th=hw.laneH*0.62;
-                return { x:going?-tw-Math.random()*w:w+Math.random()*w, y:0, w:tw, h:th, speed:hw.speed*(0.8+Math.random()*0.5)*hw.dir, color:COLORS[Math.floor(Math.random()*COLORS.length)], hw, labelTimer:Math.random()*300 };
+            let nodes = [], packets = [], labels = [];
+            function build() {
+                const w = W(), h = H(), n = Math.round(Math.max(18, Math.min(42, w * h / 32000)));
+                nodes = [];
+                for (let i = 0; i < n; i++) {
+                    const a = (i / n) * Math.PI * 2 + Math.random() * 0.5;
+                    const r = 0.30 + Math.random() * 0.42;
+                    nodes.push({
+                        x: w / 2 + Math.cos(a) * r * w * 0.62,
+                        y: h / 2 + Math.sin(a) * r * h * 0.62,
+                        size: 2 + Math.random() * 2.2,
+                        phase: Math.random() * Math.PI * 2,
+                        color: COLORS[i % COLORS.length],
+                        square: Math.random() < 0.35,
+                        timer: Math.random() * 260
+                    });
+                }
             }
-            let trucks=[];
-            highways.forEach(hw => { for(let i=0;i<4+Math.floor(Math.random()*3);i++){const t=makeTruck(hw);t.x=Math.random()*(W()+200)-100;trucks.push(t);} });
-            const DL=['87 km/h','94 km/h','102 km/h','76 km/h','RUTA-07','RUTA-12','RUTA-03','ETA 14:32','ETA 09:18','ETA 17:45','98% uptime','Motor OK','Temp 82°C'];
-            let floatingLabels=[];
-            function spawnLabel(t){floatingLabels.push({x:t.x+t.w/2,y:t.hw.yf*H()-t.h-14,text:DL[Math.floor(Math.random()*DL.length)],alpha:0,life:0,maxLife:120});}
-            function drawRoad(hw){
-                const y=hw.yf*H(),rH=hw.laneH*2.2;
-                ctx.fillStyle='#0d1120';ctx.fillRect(0,y-rH/2,W(),rH);
-                ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=1;
-                ctx.beginPath();ctx.moveTo(0,y-rH/2);ctx.lineTo(W(),y-rH/2);ctx.stroke();
-                ctx.beginPath();ctx.moveTo(0,y+rH/2);ctx.lineTo(W(),y+rH/2);ctx.stroke();
-                ctx.setLineDash([18,14]);ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=1.5;
-                ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W(),y);ctx.stroke();ctx.setLineDash([]);
-            }
-            function drawTruck(t){
-                const y=t.hw.yf*H()-t.h/2,going=t.hw.dir===1,tl=t.w*2.5,td=going?-1:1;
-                const gr=ctx.createLinearGradient(t.x,0,t.x+td*tl,0);gr.addColorStop(0,t.color+'30');gr.addColorStop(1,'transparent');
-                ctx.fillStyle=gr;ctx.fillRect(going?t.x-tl:t.x+t.w,y,tl,t.h);
-                ctx.fillStyle='#1a2238';ctx.beginPath();ctx.roundRect(t.x,y,t.w,t.h,3);ctx.fill();
-                const cw=t.w*0.28;ctx.fillStyle='#222d44';ctx.beginPath();
-                if(going)ctx.roundRect(t.x+t.w-cw,y,cw,t.h,[0,3,3,0]);else ctx.roundRect(t.x,y,cw,t.h,[3,0,0,3]);
-                ctx.fill();ctx.fillStyle=t.color+'55';ctx.fillRect(t.x+2,y+t.h*0.35,t.w-4,t.h*0.12);
-                const ly=y+t.h*0.22,ly2=y+t.h*0.78;
-                if(going){drawLight(t.x+t.w-3,ly,'#e8f4ff',6);drawLight(t.x+t.w-3,ly2,'#e8f4ff',6);drawLight(t.x+3,ly,'#ff3030',5);drawLight(t.x+3,ly2,'#ff3030',5);}
-                else{drawLight(t.x+3,ly,'#e8f4ff',6);drawLight(t.x+3,ly2,'#e8f4ff',6);drawLight(t.x+t.w-3,ly,'#ff3030',5);drawLight(t.x+t.w-3,ly2,'#ff3030',5);}
-            }
-            function drawLight(x,y,color,size){ctx.beginPath();ctx.arc(x,y,size*0.4,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();const g=ctx.createRadialGradient(x,y,0,x,y,size);g.addColorStop(0,color+'cc');g.addColorStop(1,color+'00');ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,size,0,Math.PI*2);ctx.fill();}
-            function drawLabel(l){ctx.save();ctx.globalAlpha=l.alpha;ctx.font='500 10px Inter,sans-serif';const tw=ctx.measureText(l.text).width,p=6;ctx.fillStyle='rgba(13,18,34,0.85)';ctx.beginPath();ctx.roundRect(l.x-tw/2-p,l.y-11,tw+p*2,18,3);ctx.fill();ctx.strokeStyle='rgba(95,184,230,0.35)';ctx.lineWidth=1;ctx.stroke();ctx.fillStyle='#5fb8e6';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(l.text,l.x,l.y-2);ctx.restore();}
+            window.addEventListener('resize', () => { resize(); build(); });
+            resize(); build();
             function drawGrid(){ctx.strokeStyle='rgba(95,184,230,0.025)';ctx.lineWidth=1;const s=60;for(let x=0;x<W();x+=s){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H());ctx.stroke();}for(let y=0;y<H();y+=s){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W(),y);ctx.stroke();}}
-            let last=0;
-            function frame(ts){
-                const dt=Math.min((ts-last)/16.67,3);last=ts;
-                const w=W(),h=H();
-                ctx.fillStyle='#060914';ctx.fillRect(0,0,w,h);
-                drawGrid();highways.forEach(hw=>drawRoad(hw));
-                trucks.forEach(t=>{
-                    t.x+=t.speed*dt;t.labelTimer-=dt;
-                    if(t.labelTimer<=0){spawnLabel(t);t.labelTimer=180+Math.random()*240;}
-                    if(t.hw.dir===1&&t.x>w+60)Object.assign(t,makeTruck(t.hw));
-                    else if(t.hw.dir===-1&&t.x+t.w<-60)Object.assign(t,makeTruck(t.hw));
-                    drawTruck(t);
+            function drawLabel(l){ctx.save();ctx.globalAlpha=l.alpha;ctx.font='500 10px Inter,sans-serif';const tw=ctx.measureText(l.text).width,p=6;ctx.fillStyle='rgba(13,18,34,0.85)';ctx.beginPath();ctx.roundRect(l.x-tw/2-p,l.y-11,tw+p*2,18,3);ctx.fill();ctx.strokeStyle='rgba(95,184,230,0.35)';ctx.lineWidth=1;ctx.stroke();ctx.fillStyle='#5fb8e6';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(l.text,l.x,l.y-2);ctx.restore();}
+            let last = 0, t = 0;
+            function frame(ts) {
+                const dt = Math.min((ts - last) / 16.67, 3); last = ts; t += dt;
+                const w = W(), h = H(), cx = w / 2, cy = h / 2;
+                ctx.fillStyle = '#060914'; ctx.fillRect(0, 0, w, h);
+                drawGrid();
+                // hub glow
+                const hub = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(w, h) * 0.32);
+                hub.addColorStop(0, 'rgba(95,184,230,0.10)'); hub.addColorStop(1, 'rgba(95,184,230,0)');
+                ctx.fillStyle = hub; ctx.fillRect(0, 0, w, h);
+                // links to hub
+                nodes.forEach(n => {
+                    ctx.strokeStyle = 'rgba(95,184,230,0.06)'; ctx.lineWidth = 1;
+                    ctx.beginPath(); ctx.moveTo(n.x, n.y); ctx.lineTo(cx, cy); ctx.stroke();
                 });
-                floatingLabels=floatingLabels.filter(l=>{l.life+=dt;const h2=l.maxLife/2;l.alpha=l.life<h2?l.life/h2:1-(l.life-h2)/h2;l.y-=0.15*dt;drawLabel(l);return l.life<l.maxLife;});
-                const tg=ctx.createLinearGradient(0,0,0,h*0.35);tg.addColorStop(0,'#060914');tg.addColorStop(1,'transparent');ctx.fillStyle=tg;ctx.fillRect(0,0,w,h*0.35);
-                const bg=ctx.createLinearGradient(0,h*0.65,0,h);bg.addColorStop(0,'transparent');bg.addColorStop(1,'#060914');ctx.fillStyle=bg;ctx.fillRect(0,h*0.65,w,h*0.35);
+                // nodes
+                nodes.forEach(n => {
+                    const pulse = 0.6 + 0.4 * Math.sin(t * 0.04 + n.phase);
+                    const g = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.size * 6);
+                    g.addColorStop(0, n.color + '55'); g.addColorStop(1, n.color + '00');
+                    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(n.x, n.y, n.size * 6 * pulse, 0, Math.PI * 2); ctx.fill();
+                    ctx.fillStyle = n.color;
+                    if (n.square) ctx.fillRect(n.x - n.size, n.y - n.size, n.size * 2, n.size * 2);
+                    else { ctx.beginPath(); ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2); ctx.fill(); }
+                    n.timer -= dt;
+                    if (n.timer <= 0) {
+                        n.timer = 200 + Math.random() * 320;
+                        packets.push({ n, p: 0, speed: 0.004 + Math.random() * 0.004 });
+                        if (Math.random() < 0.45) {
+                            const L = LABELS[document.documentElement.lang === 'en' ? 'en' : 'es'];
+                            labels.push({ x: n.x, y: n.y - 16, text: L[Math.floor(Math.random() * L.length)], alpha: 0, life: 0, maxLife: 150 });
+                        }
+                    }
+                });
+                // packets travelling to the hub
+                packets = packets.filter(k => {
+                    k.p += k.speed * dt;
+                    const e = k.p * k.p;
+                    const x = k.n.x + (cx - k.n.x) * e, y = k.n.y + (cy - k.n.y) * e;
+                    const g = ctx.createRadialGradient(x, y, 0, x, y, 7);
+                    g.addColorStop(0, '#e8f4ffcc'); g.addColorStop(1, '#5fb8e600');
+                    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI * 2); ctx.fill();
+                    return k.p < 1;
+                });
+                labels = labels.filter(l => { l.life += dt; const h2 = l.maxLife / 2; l.alpha = l.life < h2 ? l.life / h2 : 1 - (l.life - h2) / h2; l.y -= 0.12 * dt; drawLabel(l); return l.life < l.maxLife; });
+                const tg = ctx.createLinearGradient(0, 0, 0, h * 0.3); tg.addColorStop(0, '#060914'); tg.addColorStop(1, 'transparent'); ctx.fillStyle = tg; ctx.fillRect(0, 0, w, h * 0.3);
+                const bg = ctx.createLinearGradient(0, h * 0.7, 0, h); bg.addColorStop(0, 'transparent'); bg.addColorStop(1, '#060914'); ctx.fillStyle = bg; ctx.fillRect(0, h * 0.7, w, h * 0.3);
                 requestAnimationFrame(frame);
             }
             requestAnimationFrame(frame);
